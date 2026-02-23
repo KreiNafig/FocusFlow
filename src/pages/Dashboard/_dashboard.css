@@ -1,0 +1,40 @@
+.dashboard-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 9%;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+.dashboard-container .dashboard-quote {
+  width: 55%;
+  padding: 24px 28px;
+  background-color: var(--card);
+  border: 1px solid #d8cfc6;
+  -webkit-box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+          box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+  border-radius: 16px;
+}
+.dashboard-container .dashboard-tasks {
+  width: 35%;
+  padding: 24px 28px;
+  background-color: var(--card);
+  border: 1px solid #d8cfc6;
+  -webkit-box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+          box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+  border-radius: 16px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .dashboard-quote {
+    width: 94vw;
+  }
+}

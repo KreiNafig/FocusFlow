@@ -1,0 +1,53 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    section {
+        background-color: var(--card);
+        border: 2px solid #CAB18E;
+        padding: 20px;
+        border-radius: 10px;
+
+        header {
+            h2 {
+                font-weight: bold;
+                margin-bottom: 20px;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    transform: translateX(-50%);
+                    border: 2px solid var(--aside);
+                    width: 80px;
+                    height: 0;
+                    position: absolute;
+                    bottom: -50%;
+                    left: 3.62%;
+                }
+            }
+        }
+
+        .text-settings {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.35);
+
+            p {
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                gap: 6px;
+
+                a {
+                    font-weight: bold;
+                    color: var(--text);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,172 @@
+.container {
+    display: flex;
+}
+.container {
+    aside {
+        background: var(--aside);
+        box-shadow:
+        40px 0 80px rgba(47, 27, 18, 0.25),
+        80px 0 120px rgba(47, 27, 18, 0.12);
+        border: 1px solid var(--line);
+        width: 15%;
+        position: relative;
+        min-height: 100vh;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        header {
+            h1 {
+                color: var(--text-aside);
+                padding: 30px 20px;
+            }
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            position: absolute;
+            left: 70px;
+
+            div {
+                display: flex;
+            }
+        }
+    }
+}
+
+.languette {
+    position: relative;
+    align-items: center;
+    font-size: 18px;
+
+    a {
+        color: var(--text-aside);
+    }
+
+    svg {
+        color: var(--text-aside);
+        position: absolute;
+        left: -30%;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%;
+    margin: 0 auto;
+    padding-top: 3.5vh;
+    padding-bottom: 5vh;
+
+    article {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        h3 {
+            font-weight: 600;
+        }
+    }
+
+    h1 {
+        color: var(--text-aside);
+        font-weight: 600;
+    }
+}
+.main {
+    width: 85%;
+    background-color: var(--bg);
+    header {
+        h1 {
+            color: var(--text);
+            
+        }
+    }
+}
+
+.article {
+    width: 93%;
+    margin: 0 auto;
+}
+
+.burger {
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    .container {
+        aside {
+            min-width: 23vw;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: block;
+
+        aside {
+            display: none;
+        }
+        aside.active {
+            display: block;
+            position: absolute;
+            section {
+                top: 25vh;
+                left: 55px;
+            }
+            header {
+                h1 {
+                    position: absolute;
+                    top: 5vh;
+                }
+            }
+        }
+
+        .header {
+            padding-bottom: 5vh;
+        }
+
+        .burger {
+            display: block;
+            position: relative;
+            z-index: 1000;
+            background-color: var(--aside);
+            padding: 16px 16px;
+            font-size: 16px;
+            border: none;
+
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                width: 7vw;
+                height: 1vh;
+                background-color: white;
+            }
+            &::before {
+                transform: translateY(-10px);
+            }
+        }
+        .burger.active {
+            
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 25px;
+                background-color: white;
+            }
+            &::before {
+                transform: rotate(50deg);
+            }
+            &::after {
+                transform: rotate(-50deg);
+            }
+        }
+    }
+    }

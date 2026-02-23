@@ -1,0 +1,126 @@
+.search-action {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.search {
+    position: relative;
+    display: inline-block;
+
+    svg {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+    }
+
+    .search-bar {
+        height: 30px;
+        width: 300px;
+        padding: 15px 15px;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 20px;
+        
+        &::placeholder {
+            color: black;
+        }
+    }
+}
+
+.notes-container {
+    display: grid;
+    grid-template-columns: 25vw 25vw 25vw;
+    gap: 2vw;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    height: 100vh;
+    .note-elem {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: var(--card);
+        border-radius: 9px;
+        height: 46vh;
+        border: 2px solid black;
+
+        .action-note {
+            display: flex;
+            gap: 12px;
+        }
+
+        .note-text {
+            padding: 9px;
+            word-break: break-all;
+            line-height: 2.5vh;
+            width: 100%;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--aside);
+            color: var(--text-aside);
+            padding: 9px;
+            
+            svg {
+                background-color: var(--aside);
+                color: var(--text-aside);
+            }
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 14px;
+
+            select {
+                border: 1px solid black;
+                border-radius: 1px 10px 10px 1px;
+                background-color: #ba9f8c;
+            }
+
+            data {
+                display: flex;
+                gap: 10px;
+                background-color: var(--shadow);
+                border: 1px solid black;
+                border-right: unset;
+                border-radius: 10px 1px 1px 10px;
+                padding: 10px;
+            }
+        }
+    }
+}
+
+
+
+
+
+.actions-note {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 7.5px;
+        width: 79vw;
+
+        textarea, input {
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+
+            &::placeholder {
+                color: var(--text);
+
+            }
+        }
+
+
+        textarea {
+            height: 50vh;
+            resize: none;
+        }
+    }
+}
