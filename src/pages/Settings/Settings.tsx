@@ -1,5 +1,5 @@
 import { ButtonElem } from "../../components/ui/ButtonElem";
-import { LayoutButton } from "../../components/ui/LayoutButton"
+import { LayoutButton } from "../../components/ui/LayoutButton";
 
 
 export const Settings = () => {
@@ -7,14 +7,13 @@ export const Settings = () => {
         localStorage.clear()
         window.location.reload();
     }
+
   return (
     <div className="settings-container">
         <section className="appearance">
             <header><h2>Appearance</h2></header>
             <div className="text-settings">
                 <p style={{display: "flex"}}>Поменять тему: <LayoutButton /></p>
-                <p>Выбор акцета: </p>
-                <p>Размер шрифта: </p>
             </div>
         </section>
         <section className="Data">

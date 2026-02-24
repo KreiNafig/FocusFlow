@@ -1,7 +1,7 @@
 import { useEffect, useState, type ChangeEvent } from 'react'
-import type { ITask } from '..';
+import type { ITask } from '../..';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ButtonElem } from '../../../components/ui/ButtonElem';
+import { ButtonElem } from '../../../../components/ui/ButtonElem';
 
 export const UpdateNote = () => {
     const noteId = useParams();

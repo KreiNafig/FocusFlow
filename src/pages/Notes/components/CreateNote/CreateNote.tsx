@@ -1,7 +1,7 @@
 import { useState, type ChangeEvent } from "react";
-import type { ITask } from "..";
+import type { ITask } from "../..";
 import { useNavigate } from "react-router-dom";
-import { ButtonElem } from "../../../components/ui/ButtonElem";
+import { ButtonElem } from "../../../../components/ui/ButtonElem";
 
 
 export const CreateNote = () => {

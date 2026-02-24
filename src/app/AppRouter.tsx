@@ -6,8 +6,8 @@ import { Notes } from "../pages/Notes/Notes"
 import { Profile } from "../pages/Profile/Profile"
 import { Settings } from "../pages/Settings/Settings"
 import { NotFound } from "../pages/NotFound/NotFound"
-import { CreateNote } from "../pages/Notes/components/CreateNote"
-import { UpdateNote } from "../pages/Notes/components/UpdateNote"
+import { CreateNote } from "../pages/Notes/components/CreateNote/CreateNote"
+import { UpdateNote } from "../pages/Notes/components/UpdateNote/UpdateNote"
 import { useEffect } from "react"
 
 function App() {
