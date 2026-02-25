@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { ITask } from "../..";
+import type { INote, NoteProps } from "../..";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
@@ -7,13 +7,9 @@ import LocationDisabledIcon from '@mui/icons-material/LocationDisabled';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import { Link } from "react-router-dom";
 
-interface NoteProps {
-    title?: string | null;
-}
-
 
 export const Note = ({ title }: NoteProps) => {
-    const [notes, setNotes] = useState<ITask[]>([]);
+    const [notes, setNotes] = useState<INote[]>([]);
 
     useEffect(() => {
         const data = localStorage.getItem("notes");
@@ -23,13 +19,13 @@ export const Note = ({ title }: NoteProps) => {
 
     function handleDelete(id: number): void {
         const data = localStorage.getItem("notes");
-        const newNotes: ITask[] = data ? JSON.parse(data).filter((e: ITask) => e.id !== id) : [];
+        const newNotes: INote[] = data ? JSON.parse(data).filter((e: INote) => e.id !== id) : [];
         localStorage.setItem("notes", JSON.stringify(newNotes));
         setNotes(newNotes);
     }
     function handlePin(id: number): void {
         const data = localStorage.getItem("notes");
-        const notesArr: ITask[] = data ? JSON.parse(data) : [];
+        const notesArr: INote[] = data ? JSON.parse(data) : [];
 
         const updatedNotes = notesArr.map((note) => {
             if (note.id === id) {
@@ -57,9 +53,9 @@ export const Note = ({ title }: NoteProps) => {
           <article className="note-elem" key={e.id}>
             <div>
               <header>
-                <div style={{ display: "flex", gap: "5px" }}>
+                <div>
                   {e.pin && (
-                    <div style={{ opacity: 0.5, display: "inline-block" }}>
+                    <div className="pin-note">
                       <PushPinIcon />
                     </div>
                   )}
@@ -85,7 +81,7 @@ export const Note = ({ title }: NoteProps) => {
               </p>
             </div>
             <footer>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <div className="footer-container">
                 <select>
                   <option selected>Базовый цвет</option>
                   <option>Синий цвет</option>
@@ -93,9 +89,9 @@ export const Note = ({ title }: NoteProps) => {
                   <option>Зеленый цвет</option>
                   <option>Оранжевый цвет</option>
                 </select>
-                <data style={{ marginLeft: "15px", fontSize: "0.95em", opacity: 0.8 }}>
+                <data>
                   {e.date}
-                  <time style={{ marginLeft: "10px" }}>{e.time}</time>
+                  <time>{e.time}</time>
                 </data>
               </div>
             </footer>

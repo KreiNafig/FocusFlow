@@ -1,18 +1,7 @@
-import { useEffect, useState } from "react";
-import type { ITask } from "../..";
+import type { ITask, TaskProps } from "../..";
 
-interface Task {
-    taskSearch?: string | null;
-}
 
-export const Task = ({taskSearch}: Task) => {
-    const [tasks, setTasks] = useState<ITask[]>([]);
-
-    useEffect(() => {
-        const arrayTask: string | never[] | null = localStorage.getItem("tasks");
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setTasks(arrayTask ? JSON.parse(arrayTask) : []);
-    }, [])
+export const Task = ({ taskSearch, tasks, setTasks }: TaskProps) => {
  
     const handleChecked = (id: number, completed: boolean):void => {
         const date = new Date();
@@ -80,10 +69,10 @@ export const Task = ({taskSearch}: Task) => {
             .filter((e) => taskSearch ? e.task.toLowerCase().includes(taskSearch.toLowerCase()) : true)
             .map((e) => (
             <div key={e.id} className="task">
-                <h3 style={{maxWidth: "120px"}}>{e.task}</h3>
-                <p style={{width: "120px"}}>{e.completed ? "Completed" : "Procces"}</p>
+                <h3>{e.task}</h3>
+                <p>{e.completed ? "Completed" : "Procces"}</p>
                 <div className="actions-task">
-                <input style={{width: "120px"}} type="checkbox"  checked={e.completed} onChange={() => handleChecked(e.id, e.completed)}/>
+                <input type="checkbox"  checked={e.completed} onChange={() => handleChecked(e.id, e.completed)}/>
                 <button onClick={() => handleDelete(e.id, e.completed, e.dataCompleted)}>Удалить</button>
                 </div>
             </div>

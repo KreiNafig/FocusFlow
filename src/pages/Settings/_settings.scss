@@ -1,47 +1,64 @@
+@mixin card-style($border-radius: 10px, $border-color: #CAB18E) {
+    background-color: var(--card);
+    border: 2px solid #{$border-color};
+    border-radius: $border-radius;
+    padding: 20px;
+}
+
+@mixin section-title($width: 80px, $border-color: var(--aside), $top-offset: -50%, $left: 3.62%) {
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::before {
+        content: "";
+        display: block;
+        transform: translateX(-50%);
+        border: 2px solid $border-color;
+        width: $width;
+        height: 0;
+        position: absolute;
+        bottom: $top-offset;
+        left: $left;
+    }
+}
+
+@mixin light-bg-block($padding: 10px 12px, $border-radius: 12px) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: $padding;
+    border-radius: $border-radius;
+    background: rgba(255,255,255,0.35);
+}
+
+@mixin flex-center($gap: 6px) {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: $gap;
+}
+
+
 .settings-container {
     display: flex;
     flex-direction: column;
     gap: 40px;
 
     section {
-        background-color: var(--card);
-        border: 2px solid #CAB18E;
-        padding: 20px;
-        border-radius: 10px;
+        @include card-style();
 
         header {
             h2 {
-                font-weight: bold;
-                margin-bottom: 20px;
-                position: relative;
-
-                &::before {
-                    content: "";
-                    display: block;
-                    transform: translateX(-50%);
-                    border: 2px solid var(--aside);
-                    width: 80px;
-                    height: 0;
-                    position: absolute;
-                    bottom: -50%;
-                    left: 3.62%;
-                }
+                @include section-title();
             }
         }
 
         .text-settings {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding: 10px 12px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.35);
+            @include light-bg-block();
 
             p {
-                display: flex;
-                align-items: center;
-                font-weight: bold;
-                gap: 6px;
+                @include flex-center();
 
                 a {
                     font-weight: bold;

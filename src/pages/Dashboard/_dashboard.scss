@@ -1,9 +1,15 @@
 @mixin card-block {
-        padding: 24px 28px;
-        background-color: var(--card);
-        border: 1px solid #CAB18E;
-        box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
-        border-radius: 16px;
+    padding: 24px 28px;
+    background-color: var(--card);
+    border: 1px solid #CAB18E;
+    box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+    border-radius: 16px;
+}
+
+@mixin light-bg-block {
+    padding: 12px 6px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.35);
 }
 
 .dashboard-container {
@@ -30,15 +36,12 @@
                 p {
                     margin-top: 2vh;
                     font-size: 1.1em;
-                    padding: 12px 6px;
-                    border-radius: 12px;
-                    background: rgba(255,255,255,0.35);
+                    @include light-bg-block;
                 }
             }
-    }
+        }
     }
 
-    
     .dashboard-tasks {
         width: 35%;
         height: 288px;
@@ -48,9 +51,7 @@
             font-weight: 700;
         }
         ul {
-            padding: 12px 6px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.35);
+            @include light-bg-block;
         }
 
         li {
@@ -64,6 +65,25 @@
     .dashboard-card {
         @include card-block;
         width: 29vw;
+
+        .dashboard-pomodoro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .pomodor-actions {
+                display: flex;
+                gap: 1.5vw;
+                margin-top: 3vh;
+            }
+        }
+
+        .img-cat {
+            width: 100%;
+            height: 88%;
+            border-radius: 10px;
+            border: 1px solid #CAB18E;
+        }
     }
 }
 
@@ -91,9 +111,9 @@
         display: none;
     }
     .dashboard-container {
-    width: 100%;
-    justify-content: space-between;
-    gap: 2%;
+        width: 100%;
+        justify-content: space-between;
+        gap: 2%;
 
         .dashboard-tasks {
             width: unset;
@@ -115,8 +135,6 @@
         }
     }
 }
-
-
 
 @media (max-width: 768px) {
     .dashboard-container {

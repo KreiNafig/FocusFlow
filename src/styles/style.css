@@ -90,7 +90,7 @@ body {
   --line: unset;
   --text: #202020;
   --text-aside: #ECECEC;
-  --accent: #6C5CE7;
+  --accent: #ffffff;
   --accent-2: #00CEC9;
   --shadow: rgba(0, 0, 0, 0.07);
 }
@@ -103,7 +103,7 @@ body {
   --line: #CAB18E;
   --text: #E5DED1;
   --text-aside: #E5DED1;
-  --accent: #493ea0;
+  --accent: #000000;
   --accent-2: #00CEC9;
   --shadow: rgba(0, 0, 0, 0.35);
 }
@@ -314,6 +314,22 @@ body {
   border-radius: 16px;
   width: 29vw;
 }
+.dashboard-container .dashboard-card .dashboard-pomodoro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard-container .dashboard-card .dashboard-pomodoro .pomodor-actions {
+  display: flex;
+  gap: 1.5vw;
+  margin-top: 3vh;
+}
+.dashboard-container .dashboard-card .img-cat {
+  width: 100%;
+  height: 88%;
+  border-radius: 10px;
+  border: 1px solid #CAB18E;
+}
 
 .chart-wrapper {
   width: 100%;
@@ -389,24 +405,31 @@ body {
   border-radius: 16px;
 }
 
+.search-bar {
+  height: 30px;
+  width: 300px;
+  padding: 15px 15px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 20px;
+  color: var(--text);
+  background-color: var(--accent);
+}
+.search-bar::placeholder {
+  color: var(--text);
+}
+
 .action-task {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
   gap: 20px;
+  align-items: stretch;
+  justify-content: flex-end;
   margin-bottom: 20px;
 }
 
 .search {
   position: relative;
-}
-.search .search-bar {
-  height: 36px;
-  width: 260px;
-  padding: 0 40px 0 15px;
-  border: 1.5px solid var(--text);
-  border-radius: 20px;
-  background: transparent;
-  color: var(--text);
 }
 .search svg {
   position: absolute;
@@ -424,6 +447,9 @@ body {
 
 .tasks-header {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   padding: 0 20px 15px;
   font-weight: 500;
@@ -433,12 +459,16 @@ article {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 
 .task {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 0;
   align-items: center;
+  justify-content: space-between;
   padding: 12px 20px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.35);
@@ -447,20 +477,24 @@ article {
 }
 .task h3 {
   width: 30%;
+  max-width: 120px;
   font-weight: 500;
 }
 .task p {
-  width: 30%;
+  width: 120px;
   text-align: center;
   opacity: 0.8;
 }
 .task .actions-task {
   display: flex;
+  flex-direction: row;
+  gap: 0;
   align-items: center;
+  justify-content: flex-start;
   width: 13%;
 }
 .task .actions-task input {
-  width: 20px;
+  width: 120px;
   height: 20px;
 }
 .task .actions-task button {
@@ -489,15 +523,16 @@ article {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: stretch;
+  justify-content: flex-start;
   padding: 20px;
   background-color: var(--card);
   border: 3px solid #CAB18E;
-  border-radius: 16px;
-  height: 200px;
-  width: 300px;
   border-radius: 14px;
   z-index: 1010;
   box-shadow: 0 2px 16px rgba(60, 30, 10, 0.25);
+  height: 200px;
+  width: 300px;
 }
 .modal-container h2 {
   font-weight: bold;
@@ -505,29 +540,31 @@ article {
 }
 .modal-container input {
   border: 1.5px solid black;
+  border-radius: 5px;
   width: 100%;
   height: 30px;
-  padding: 0px 10px;
-  border-radius: 5px;
+  padding: 0 10px;
 }
 .modal-container input::placeholder {
   color: black;
 }
 .modal-container button {
-  align-self: center;
-  width: 200px;
   border: 1.5px solid black;
   border-radius: 5px;
   background-color: var(--aside);
   color: var(--text-aside);
   font-weight: bold;
   padding: 5px 10px;
+  align-self: center;
+  width: 200px;
 }
 
 .search-action {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
   gap: 10px;
+  align-items: stretch;
+  justify-content: flex-end;
 }
 
 .search {
@@ -562,15 +599,31 @@ article {
 .notes-container .note-elem {
   display: flex;
   flex-direction: column;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   background-color: var(--card);
   border-radius: 9px;
   height: 46vh;
   border: 2px solid black;
 }
+.notes-container .note-elem header div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+.notes-container .note-elem header div .pin-note {
+  display: inline-block;
+  opacity: 0.5;
+}
 .notes-container .note-elem .action-note {
   display: flex;
+  flex-direction: row;
   gap: 12px;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 .notes-container .note-elem .note-text {
   padding: 9px;
@@ -580,6 +633,9 @@ article {
 }
 .notes-container .note-elem header {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   background-color: var(--aside);
   color: var(--text-aside);
@@ -591,8 +647,19 @@ article {
 }
 .notes-container .note-elem footer {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   padding-bottom: 14px;
+}
+.notes-container .note-elem footer .footer-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .notes-container .note-elem footer select {
   border: 1px solid black;
@@ -601,35 +668,51 @@ article {
 }
 .notes-container .note-elem footer data {
   display: flex;
+  flex-direction: row;
   gap: 10px;
+  align-items: stretch;
+  justify-content: flex-start;
   background-color: var(--shadow);
   border: 1px solid black;
   border-right: unset;
   border-radius: 10px 1px 1px 10px;
   padding: 10px;
+  margin-left: 15px;
+  font-size: 0.95em;
+  opacity: 0.8;
+}
+.notes-container .note-elem footer data .time {
+  margin-left: 10px;
 }
 
-.actions-note {
+.update-note h2, .create-note h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.update-note .actions-note, .create-note .actions-note {
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 25px;
+  align-items: center;
+  justify-content: flex-start;
 }
-.actions-note article {
+.update-note .actions-note article, .create-note .actions-note article {
   display: flex;
   flex-direction: column;
   gap: 7.5px;
+  align-items: stretch;
+  justify-content: flex-start;
   width: 79vw;
 }
-.actions-note article textarea, .actions-note article input {
+.update-note .actions-note article textarea, .update-note .actions-note article input, .create-note .actions-note article textarea, .create-note .actions-note article input {
   padding: 10px;
   border: 2px solid black;
   border-radius: 10px;
 }
-.actions-note article textarea::placeholder, .actions-note article input::placeholder {
+.update-note .actions-note article textarea::placeholder, .update-note .actions-note article input::placeholder, .create-note .actions-note article textarea::placeholder, .create-note .actions-note article input::placeholder {
   color: var(--text);
 }
-.actions-note article textarea {
+.update-note .actions-note article textarea, .create-note .actions-note article textarea {
   height: 50vh;
   resize: none;
 }
@@ -640,20 +723,27 @@ article {
   margin-top: 7%;
   display: flex;
   flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 .user .profile-user {
   display: flex;
   flex-direction: column;
+  gap: 0;
   align-items: center;
+  justify-content: flex-start;
   background-color: var(--card);
-  position: relative;
   border: 2px solid #CAB18E;
   border-radius: 10px;
+  position: relative;
 }
 .user .profile-user .osnova-user {
   display: flex;
   flex-direction: column;
+  gap: 0;
   align-items: center;
+  justify-content: flex-start;
   width: 100%;
   max-height: 100vh;
   margin-top: 9%;
@@ -685,6 +775,7 @@ article {
   flex-direction: column;
   gap: 10px;
   align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
   border-radius: 0px 0px 7.5px 7.5px;
   background-color: var(--aside);
@@ -693,11 +784,17 @@ article {
 }
 .user .profile-user .osnova-user .dob-info .location-user {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   width: 100%;
 }
 .user .about-user {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: space-between;
   margin-top: 50px;
 }
@@ -713,15 +810,21 @@ article {
 }
 .user .about-user article h2::before {
   content: "";
-  border: 2px solid var(--aside);
-  width: 100px;
+  display: block;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
+  width: 100px;
+  height: 0;
+  border: 2px solid var(--aside);
 }
 .user .about-user article .about-info {
   display: flex;
   flex-direction: column;
   gap: 7.5px;
+  align-items: stretch;
+  justify-content: flex-start;
   padding: 4px 12px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.35);
@@ -733,6 +836,9 @@ article {
 }
 .user .update-user {
   display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: stretch;
   justify-content: center;
   margin-top: 10%;
 }

@@ -3,3 +3,18 @@
         box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
         border-radius: 16px;
 }
+
+.search-bar {
+        height: 30px;
+        width: 300px;
+        padding: 15px 15px;
+        box-sizing: border-box;
+        border: 2px solid black;
+        border-radius: 20px;
+        color: var(--text);
+        background-color: var(--accent);
+        
+        &::placeholder {
+            color: var(--text);
+        }
+    }

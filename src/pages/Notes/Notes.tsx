@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { ButtonElem } from "../../components/ui/ButtonElem";
 import { Note } from "./components/NotesShablon/Note";
+import { InputElem } from "../../components/ui/InputElem";
 
 export const Notes = () => {
     const [searchTitle, setSearchTitle] = useSearchParams('');
@@ -17,10 +18,10 @@ export const Notes = () => {
    <div>
         <div className="search-action">
             <header className="search">
-                <input className="search-bar" placeholder="Поиск" value={titleSearch ?? ""} onChange={(e) => handleSearchTitle("title", e.target.value)} />
+                <InputElem text={titleSearch ?? ""} place="Поиск заметки..." change={(e) => handleSearchTitle("title", e.target.value)} />
                 <SearchIcon />
             </header>
-                <Link to="/notes/new"><ButtonElem padding="0px 16px" heightElem="35px">Создать закладку</ButtonElem></Link>
+                <Link to="/notes/new"><ButtonElem padding="0px 16px" heightElem="35px">Создать заметку</ButtonElem></Link>
         </div>
         <Note title={titleSearch} />
    </div>

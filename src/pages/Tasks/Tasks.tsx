@@ -5,11 +5,12 @@ import { useSearchParams } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { ButtonElem } from "../../components/ui/ButtonElem";
 import { Task } from "./components/Task/Task";
+import { InputElem } from "../../components/ui/InputElem";
 
 
 export const Tasks = () => {
     const [modal, setModal] = useState<boolean>(false);
-    const [, setTasks] = useState<ITask[]>([]);
+    const [tasks, setTasks] = useState<ITask[]>([]);
     const [searchTask, setSearchTask] = useSearchParams('');
     const taskSearch: string | null = searchTask.get('task');
 
@@ -34,7 +35,7 @@ export const Tasks = () => {
         <div className="action-task">
         {modal && <ModalTask setTasks={setTasks} onClose={handleClose} openModal={modal} />}
         <div className="search">
-        <input className="search-bar" placeholder="Поиск задачи..." value={taskSearch ?? ""} onChange={(e) => handleSearchTitle("task", e.target.value)} />
+        <InputElem text={taskSearch ?? ""} place="Поиск задачи..." change={(e) => handleSearchTitle("task", e.target.value)} />
         <SearchIcon />
         </div>
         <div onClick={() => setModal(!modal)}><ButtonElem padding="0px 16px" heightElem="35px">Создать задачу</ButtonElem></div>
@@ -45,7 +46,7 @@ export const Tasks = () => {
             <h2>In progress</h2>
             <h2>Done</h2>
         </header>
-        <Task taskSearch={taskSearch} />
+        <Task taskSearch={taskSearch} tasks={tasks} setTasks={setTasks} />
         </section>
     </div>
   )

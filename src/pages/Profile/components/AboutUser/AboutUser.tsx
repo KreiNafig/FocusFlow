@@ -1,12 +1,5 @@
-interface IUser {
-    user: {
-        gender: string;
-        dob: { age: number };
-        phone: string;
-        registered: { date: string; age: number};
-        login: { username: string };
-    } | null;
-}
+import type { IUser } from "../.."
+
 
 export const AboutUser = ({user}: IUser) => {
   return (

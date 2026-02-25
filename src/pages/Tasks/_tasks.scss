@@ -1,93 +1,24 @@
-.action-task {
+@mixin flex($direction: row, $gap: 0, $align: stretch, $justify: flex-start) {
     display: flex;
-    justify-content: flex-end;
-    gap: 20px;
-    margin-bottom: 20px;
+    flex-direction: $direction;
+    gap: $gap;
+    align-items: $align;
+    justify-content: $justify;
 }
 
-.search {
-    position: relative;
-
-    .search-bar {
-        height: 36px;
-        width: 260px;
-        padding: 0 40px 0 15px;
-        border: 1.5px solid var(--text);
-        border-radius: 20px;
-        background: transparent;
-        color: var(--text);
-    }
-
-    svg {
-        position: absolute;
-        top: 8px;
-        right: 12px;
-    }
+@mixin card-style($border-radius: 16px, $border-color: #CAB18E, $padding: 24px, $bg: var(--card)) {
+    background-color: $bg;
+    border: 1.5px solid #{$border-color};
+    border-radius: $border-radius;
+    padding: $padding;
 }
 
-.todo-list {
-    background-color: var(--card);
-    border: 1.5px solid #CAB18E;
-    border-radius: 16px;
-    padding: 24px;
-    width: 79vw;
-}
-
-.tasks-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px 15px;
-    font-weight: 500;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-
-.task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    border-radius: 12px;
+@mixin light-bg-block($radius: 12px) {
+    border-radius: $radius;
     background: rgba(255,255,255,0.35);
-    color: var(--text);
-    font-weight: bold;
-
-    h3 {
-        width: 30%;
-        font-weight: 500;
-    }
-    
-    p {
-        width: 30%;
-        text-align: center;
-        opacity: 0.8;
-    }
-
-    .actions-task {
-        display: flex;
-        align-items: center;
-        width: 13%;;
-
-        input {
-            width: 20px;
-            height: 20px;
-        }
-        button {
-            background: transparent;
-            border: 1px solid var(--text);
-            border-radius: 8px;
-            padding: 4px 10px;
-            cursor: pointer;
-        }
-    }
 }
 
-.modal {
+@mixin center-modal {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
@@ -101,19 +32,110 @@ article {
     backdrop-filter: blur(2px);
 }
 
+@mixin input-style($border-radius: 5px, $border-color: black) {
+    border: 1.5px solid $border-color;
+    border-radius: $border-radius;
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+
+    &::placeholder {
+        color: black;
+    }
+}
+
+@mixin button-main {
+    border: 1.5px solid black;
+    border-radius: 5px;
+    background-color: var(--aside);
+    color: var(--text-aside);
+    font-weight: bold;
+    padding: 5px 10px;
+    align-self: center;
+    width: 200px;
+}
+
+.action-task {
+    @include flex(row, 20px, stretch, flex-end);
+    margin-bottom: 20px;
+}
+
+.search {
+    position: relative;
+
+    svg {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+    }
+}
+
+.todo-list {
+    @include card-style(16px, #CAB18E, 24px, var(--card));
+    width: 79vw;
+}
+
+.tasks-header {
+    @include flex(row, 0, stretch, space-between);
+    padding: 0 20px 15px;
+    font-weight: 500;
+}
+
+article {
+    @include flex(column, 12px);
+}
+
+.task {
+    @include flex(row, 0, center, space-between);
+    padding: 12px 20px;
+    @include light-bg-block(12px);
+    color: var(--text);
+    font-weight: bold;
+
+    h3 {
+        width: 30%;
+        max-width: 120px;
+        font-weight: 500;
+    }
+
+    p {
+        width: 120px;
+        text-align: center;
+        opacity: 0.8;
+    }
+
+    .actions-task {
+        @include flex(row, 0, center);
+        width: 13%;
+
+        input {
+            width: 120px;
+            height: 20px;
+        }
+        button {
+            background: transparent;
+            border: 1px solid var(--text);
+            border-radius: 8px;
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.modal {
+    @include center-modal;
+}
+
 .modal-container {
-    display: flex;;
-    flex-direction: column;
-    gap: 10px;
+    @include flex(column, 10px);
     padding: 20px;
     background-color: var(--card);
     border: 3px solid #CAB18E;
-    border-radius: 16px;
-    height: 200px;
-    width: 300px;
     border-radius: 14px;
     z-index: 1010;
     box-shadow: 0 2px 16px rgba(60,30,10,0.25);
+    height: 200px;
+    width: 300px;
 
     h2 {
         font-weight: bold;
@@ -121,25 +143,10 @@ article {
     }
 
     input {
-        border: 1.5px solid black;
-        width: 100%;
-        height: 30px;
-        padding: 0px 10px;
-        border-radius: 5px;
-
-        &::placeholder {
-            color: black;
-        }
+        @include input-style(5px, black);
     }
 
     button {
-        align-self: center;
-        width: 200px;
-        border: 1.5px solid black;
-        border-radius: 5px;
-        background-color: var(--aside);
-        color: var(--text-aside);
-        font-weight: bold;
-        padding: 5px 10px;
+        @include button-main;
     }
 }

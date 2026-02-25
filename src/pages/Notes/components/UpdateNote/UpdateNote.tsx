@@ -1,5 +1,5 @@
 import { useEffect, useState, type ChangeEvent } from 'react'
-import type { ITask } from '../..';
+import type { INote } from '../..';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ButtonElem } from '../../../../components/ui/ButtonElem';
 
@@ -11,9 +11,9 @@ export const UpdateNote = () => {
     
     useEffect(() => {
         const notesStorage = localStorage.getItem("notes");
-        const data: ITask[] = notesStorage ? JSON.parse(notesStorage) : [];
+        const data: INote[] = notesStorage ? JSON.parse(notesStorage) : [];
             if (notesStorage && noteId.id !== undefined) {
-                const note: ITask | undefined = data.find((e) => e.id === +noteId.id!);
+                const note: INote | undefined = data.find((e) => e.id === +noteId.id!);
                 if (note) {
                     // eslint-disable-next-line react-hooks/set-state-in-effect
                     setTitle(note.title);
@@ -26,9 +26,9 @@ export const UpdateNote = () => {
     function handleSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         const notesStorage = localStorage.getItem("notes");
-        const data: ITask[] = notesStorage ? JSON.parse(notesStorage) : [];
+        const data: INote[] = notesStorage ? JSON.parse(notesStorage) : [];
 
-        const updatedNotes = data.map((note: ITask) => {
+        const updatedNotes = data.map((note: INote) => {
             if (note.id === +noteId.id!) {
                 return {
                     ...note,
@@ -43,8 +43,8 @@ export const UpdateNote = () => {
     }
 
   return (
-    <div>
-        <h2 style={{textAlign: "left", marginBottom: "20px"}}>Редактирование закладки</h2>
+    <div className="update-note">
+        <h2>Редактирование закладки</h2>
         <form className="actions-note" onSubmit={handleSubmit}>
             <article>
             <label htmlFor="headline">Заголовок</label>
@@ -54,7 +54,7 @@ export const UpdateNote = () => {
             <label htmlFor="text-note">Текст</label>
             <textarea id="text-note" onChange={(e) => setText(e.target.value)} defaultValue={text} placeholder="Текст" />
             </article>
-            <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Сохранить</ButtonElem>
+            <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Сохранить заметку</ButtonElem>
         </form>
     </div>
   )

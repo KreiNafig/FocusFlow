@@ -1,10 +1,5 @@
-interface ProfileUserProps {
-  user: {
-    picture: { large: string };
-    name: { title: string; first: string; last: string };
-    location: { country: string; city: string };
-  } | null;
-}
+import type { ProfileUserProps } from "../.."
+
 
 export const ProfileUser = ({ user }: ProfileUserProps) => {
   return (

@@ -1,23 +1,52 @@
+@mixin flex($direction: row, $gap: 0, $align: stretch, $justify: flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    gap: $gap;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin card-style($border-radius: 10px, $border-color: #CAB18E) {
+    background-color: var(--card);
+    border: 2px solid #{$border-color};
+    border-radius: $border-radius;
+}
+
+@mixin section-title($width: 75px, $border-color: var(--aside), $top-offset: -5px) {
+    position: relative;
+    height: 34px;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: $top-offset;
+        width: $width;
+        height: 0;
+        border: 2px solid $border-color;
+    }
+}
+
+@mixin light-bg-block {
+    border-radius: 12px;
+    background: rgba(255,255,255,0.35);
+}
+
+
 .user {
     width: 50vw;
     margin: 0 auto;
     margin-top: 7%;
-    display: flex;
-    flex-direction: column;
+    @include flex(column);
 
     .profile-user {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: var(--card);
+        @include flex(column, 0, center);
+        @include card-style;
         position: relative;
-        border: 2px solid #CAB18E;
-        border-radius: 10px;
     
         .osnova-user {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            @include flex(column, 0, center);
             width: 100%;
             max-height: 100vh;
             margin-top: 9%;
@@ -31,26 +60,11 @@
 
             .name-user {
                 margin-bottom: 20px;
-                position: relative;
-                height: 34px;
-                &::before {
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    bottom: -5px;
-                    width: 75px;
-                    height: 0;
-                    border: 2px solid var(--aside);
-                }
+                @include section-title(75px, var(--aside), -5px);
             }
 
             .dob-info {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
+                @include flex(column, 10px, flex-start);
                 width: 100%;
                 border-radius: 0px 0px 7.5px 7.5px;
                 background-color: var(--aside);
@@ -58,8 +72,7 @@
                 padding: 15px 40px;
 
                 .location-user {
-                    display: flex;
-                    justify-content: space-between;
+                    @include flex(row, 0, stretch, space-between);
                     width: 100%;
                 }
             }
@@ -67,35 +80,21 @@
     }
 
     .about-user {
-        display: flex;
-        justify-content: space-between;
+        @include flex(row, 0, stretch, space-between);
         margin-top: 50px;
 
         article {
-            background-color: var(--card);
-            border: 2px solid #CAB18E;
-            border-radius: 10px;
+            @include card-style;
             padding: 20px 30px;
 
             h2 {
-                position: relative;
-                height: 34px;
-                &::before {
-                    content: "";
-                    border: 2px solid var(--aside);
-                    width: 100px;
-                    position: absolute;
-                    bottom: 0;
-                }
+                @include section-title(100px, var(--aside), 0);
             }
 
             .about-info {
-                display: flex;
-                flex-direction: column;
-                gap: 7.5px;
+                @include flex(column, 7.5px);
                 padding: 4px 12px;
-                border-radius: 12px;
-                background: rgba(255,255,255,0.35);
+                @include light-bg-block;
 
                 div {
                     p {
@@ -109,8 +108,7 @@
     }
 
     .update-user {
-        display: flex;
-        justify-content: center;
+        @include flex(row, 0, stretch, center);
         margin-top: 10%;
     }
 }

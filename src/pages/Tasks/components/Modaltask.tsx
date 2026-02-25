@@ -1,12 +1,8 @@
 import { useRef, useState } from "react"
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
-import type { ITask } from "..";
+import type { IModal, ITask } from "..";
 
-interface IModal {
-    setTasks: React.Dispatch<React.SetStateAction<ITask[]>>;
-    onClose: () => void;
-    openModal: boolean;
-}
+
 
 export const ModalTask = ({setTasks, onClose, openModal}: IModal) => {
     const [task, setTask] = useState<string>("");

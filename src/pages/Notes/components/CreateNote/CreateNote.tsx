@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import type { ITask } from "../..";
+import type { INote } from "../..";
 import { useNavigate } from "react-router-dom";
 import { ButtonElem } from "../../../../components/ui/ButtonElem";
 
@@ -13,7 +13,7 @@ export const CreateNote = () => {
 
     function handleSubmit(e: ChangeEvent<HTMLFormElement>): void {
         e.preventDefault();
-        const data: ITask = {
+        const data: INote = {
             id: Date.now(),
             title: title,
             text: text,
@@ -23,14 +23,14 @@ export const CreateNote = () => {
         }
 
         const existingTasks = localStorage.getItem("notes");
-        const tasks: ITask[] = existingTasks ? JSON.parse(existingTasks) : [];
+        const tasks: INote[] = existingTasks ? JSON.parse(existingTasks) : [];
         tasks.push(data);
         localStorage.setItem("notes", JSON.stringify(tasks));
         navigate('/notes')
     }
   return (
-    <div>
-        <h2 style={{textAlign: "left", marginBottom: "20px"}}>Создание закладки</h2>
+    <div className="create-note">
+        <h2>Создание закладки</h2>
         <form className="actions-note" onSubmit={handleSubmit}>
             <article>
             <label htmlFor="headline">Заголовок</label>
@@ -40,7 +40,7 @@ export const CreateNote = () => {
             <label htmlFor="text-note">Текст</label>
             <textarea id="text-note" onChange={(e) => setText(e.target.value)} placeholder='Введите текст' />
             </article>
-            <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Создать Закладку</ButtonElem>
+            <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Создать заметку</ButtonElem>
         </form>
     </div>
   )

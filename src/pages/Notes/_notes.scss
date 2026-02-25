@@ -1,8 +1,29 @@
-.search-action {
+@mixin flex($direction: row, $gap: 0, $align: stretch, $justify: flex-start) {
     display: flex;
-    justify-content: flex-end;
-    gap: 10px;
+    flex-direction: $direction;
+    gap: $gap;
+    align-items: $align;
+    justify-content: $justify;
 }
+
+@mixin field-style($border-radius: 10px) {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: $border-radius;
+
+    &::placeholder {
+        color: var(--text);
+    }
+}
+@mixin textAlign {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.search-action {
+    @include flex(row, 10px, stretch, flex-end);
+}
+
 .search {
     position: relative;
     display: inline-block;
@@ -20,7 +41,7 @@
         box-sizing: border-box;
         border: 2px solid black;
         border-radius: 20px;
-        
+
         &::placeholder {
             color: black;
         }
@@ -34,18 +55,28 @@
     margin-top: 3vh;
     margin-bottom: 3vh;
     height: 100vh;
+
     .note-elem {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex(column, 0, stretch, space-between);
         background-color: var(--card);
         border-radius: 9px;
         height: 46vh;
         border: 2px solid black;
 
+        header {
+            div {
+                @include flex(row, 5px);
+                
+                .pin-note {
+                    display: inline-block;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+
         .action-note {
-            display: flex;
-            gap: 12px;
+            @include flex(row, 12px);
         }
 
         .note-text {
@@ -55,21 +86,24 @@
             width: 100%;
         }
         header {
-            display: flex;
-            justify-content: space-between;
+            @include flex(row, 0, stretch, space-between);
             background-color: var(--aside);
             color: var(--text-aside);
             padding: 9px;
-            
+
             svg {
                 background-color: var(--aside);
                 color: var(--text-aside);
             }
         }
         footer {
-            display: flex;
-            justify-content: space-between;
+            @include flex(row, 0, stretch, space-between);
             padding-bottom: 14px;
+
+            .footer-container {
+                @include flex(row, 0, center, space-between);
+                width: 100%;
+            }
 
             select {
                 border: 1px solid black;
@@ -78,49 +112,44 @@
             }
 
             data {
-                display: flex;
-                gap: 10px;
+                @include flex(row, 10px);
                 background-color: var(--shadow);
                 border: 1px solid black;
                 border-right: unset;
                 border-radius: 10px 1px 1px 10px;
                 padding: 10px;
+                margin-left: 15px;
+                font-size: 0.95em;
+                opacity: 0.8;
+
+                .time {
+                    margin-left: 10px;
+                }
             }
         }
     }
 }
 
+.update-note, .create-note {
+    h2 {
+        @include textAlign;
+    }
 
+    .actions-note {
+        @include flex(column, 25px, center);
 
+        article {
+            @include flex(column, 7.5px);
+            width: 79vw;
 
-
-.actions-note {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 25px;
-
-    article {
-        display: flex;
-        flex-direction: column;
-        gap: 7.5px;
-        width: 79vw;
-
-        textarea, input {
-            padding: 10px;
-            border: 2px solid black;
-            border-radius: 10px;
-
-            &::placeholder {
-                color: var(--text);
-
+            textarea, input {
+                @include field-style();
             }
-        }
 
-
-        textarea {
-            height: 50vh;
-            resize: none;
+            textarea {
+                height: 50vh;
+                resize: none;
+            }
         }
     }
 }

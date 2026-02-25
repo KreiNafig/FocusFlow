@@ -5,8 +5,8 @@ import { ButtonElem } from '../../../../components/ui/ButtonElem';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import BlockIcon from '@mui/icons-material/Block';
+import type { PomodoroMode } from '../..';
 
-type PomodoroMode = 'work' | 'break';
 
 export const Pomodoro = () => {
   const timeRef = useRef<number | undefined>(undefined)
@@ -90,9 +90,9 @@ export const Pomodoro = () => {
       <header style={{ marginBottom: "3vh" }}>
         <h2>Pomodoro таймер:</h2>
       </header>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div className="dashboard-pomodoro">
         <PomodoroCircle totalTime={totalTimeSeconds} timeLeft={timeNow} />
-        <div style={{ display: "flex", gap: "1.5vw", marginTop: "3vh" }}>
+        <div className="pomodor-actions">
           <div onClick={handleClick}>
             <ButtonElem padding="14px 14px" butColor="white" color="#795548">
               <PlayArrowIcon />
