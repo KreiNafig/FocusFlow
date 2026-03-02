@@ -50,7 +50,7 @@ export const Note = ({ title }: NoteProps) => {
         )
         .sort((a, b) => (b.pin ? 1 : 0) - (a.pin ? 1 : 0))
         .map((e) => (
-          <article className="note-elem" key={e.id}>
+          <article className={`note-elem ${e.pin && "pinned"}`} key={e.id}>
             <div>
               <header>
                 <div>

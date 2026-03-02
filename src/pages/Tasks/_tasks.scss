@@ -53,6 +53,16 @@
     padding: 5px 10px;
     align-self: center;
     width: 200px;
+    transition: box-shadow 0.2s, background 0.2s, transform 0.15s;
+    &:hover {
+        box-shadow: 0 2px 8px 0 rgba(61, 39, 26, 0.18);
+        background-color: lighten(#3D271A, 7%);
+        transform: translateY(-2px) scale(1.03);
+    }
+    &:active {
+        transform: translateY(1px) scale(0.97);
+        box-shadow: 0 1px 2px 0 rgba(61, 39, 26, 0.14);
+    }
 }
 
 .action-task {
@@ -91,7 +101,19 @@ article {
     @include light-bg-block(12px);
     color: var(--text);
     font-weight: bold;
+    animation: fade-up var(--dur-4) var(--ease) both;
+    transition:
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        filter 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    &:hover {
+        box-shadow: 0 4px 18px 0 rgba(61, 39, 26, 0.08);
+        background: rgba(255,255,255,0.48);
+        filter: brightness(1.05);
+        transform: translateY(-4px);
+    }
     h3 {
         width: 30%;
         max-width: 120px;
@@ -117,13 +139,43 @@ article {
             border: 1px solid var(--text);
             border-radius: 8px;
             padding: 4px 10px;
+            width: 125px;
             cursor: pointer;
+            transition: 
+                background-color 0.25s,
+                color 0.25s, 
+                box-shadow 0.22s, 
+                filter 0.22s,
+                transform 0.22s;
+            position: relative;
+            overflow: hidden;
+
+            &:hover {
+                background-color: var(--aside);
+                color: white;
+                box-shadow: 0 4px 16px 0 rgba(61, 39, 26, 0.13);
+                filter: brightness(1.09);
+                transform: translateY(-2px);
+            }
+            &:active {
+                filter: brightness(0.97);
+                transform: translateY(0px);
+            }
         }
     }
 }
 
 .modal {
     @include center-modal;
+    animation: modal-fade 0.36s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes modal-fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal-container {
@@ -136,14 +188,27 @@ article {
     box-shadow: 0 2px 16px rgba(60,30,10,0.25);
     height: 200px;
     width: 300px;
+    animation: pop-modal 0.44s cubic-bezier(0.4,0,0.2,1);
+
+    @keyframes pop-modal {
+        from { opacity: 0; transform: translateY(16px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
 
     h2 {
         font-weight: bold;
         margin-bottom: 4px;
+        transition: color 0.18s;
     }
 
     input {
         @include input-style(5px, black);
+        transition: box-shadow 0.19s;
+
+        
+        &:focus {
+            box-shadow: 0 2px 10px 0 rgba(61, 39, 26, 0.14);
+        }
     }
 
     button {

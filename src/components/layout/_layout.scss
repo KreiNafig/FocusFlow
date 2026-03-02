@@ -39,15 +39,46 @@
     position: relative;
     align-items: center;
     font-size: 18px;
+    transition: transform var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
 
     a {
         color: var(--text-aside);
+        position: relative;
+        transition: opacity var(--dur-2) var(--ease);
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.75);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--dur-3) var(--ease);
+        }
     }
 
     svg {
         color: var(--text-aside);
         position: absolute;
         left: -30%;
+        transition: transform var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease);
+    }
+
+    &:hover {
+        transform: translateX(4px);
+        filter: brightness(1.06);
+        a {
+            opacity: 0.95;
+            &::after {
+                transform: scaleX(1);
+            }
+        }
+        svg {
+            transform: translateX(-2px);
+            opacity: 0.95;
+        }
     }
 }
 
@@ -138,6 +169,7 @@
             padding: 16px 16px;
             font-size: 16px;
             border: none;
+            transition: filter var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
 
             &::after,
             &::before {
@@ -146,9 +178,18 @@
                 width: 7vw;
                 height: 1vh;
                 background-color: white;
+                transition: transform var(--dur-3) var(--ease), opacity var(--dur-2) var(--ease);
             }
             &::before {
                 transform: translateY(-10px);
+            }
+            &::after {
+                transform: translateY(10px);
+            }
+
+            &:active {
+                transform: scale(0.98);
+                filter: brightness(0.95);
             }
         }
         .burger.active {

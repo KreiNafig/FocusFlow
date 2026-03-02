@@ -34,11 +34,11 @@ export const CreateNote = () => {
         <form className="actions-note" onSubmit={handleSubmit}>
             <article>
             <label htmlFor="headline">Заголовок</label>
-            <input id="headline" onChange={(e) => setTitle(e.target.value)} placeholder='Введите заголовок' />
+            <input id="headline" onChange={(e) => setTitle(e.target.value)} placeholder='Введите заголовок...' />
             </article>
             <article>
             <label htmlFor="text-note">Текст</label>
-            <textarea id="text-note" onChange={(e) => setText(e.target.value)} placeholder='Введите текст' />
+            <textarea id="text-note" onChange={(e) => setText(e.target.value)} placeholder='Введите текст...' />
             </article>
             <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Создать заметку</ButtonElem>
         </form>

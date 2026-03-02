@@ -50,6 +50,12 @@ body {
     --accent: #ffffff;
     --accent-2: #00CEC9;
     --shadow: rgba(0, 0, 0, 0.07);
+    --dur-1: 0.15s;
+    --dur-2: 0.22s;
+    --dur-3: 0.3s;
+    --dur-4: 0.44s;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root[data-theme="dark"] {
@@ -63,6 +69,12 @@ body {
     --accent: #000000;
     --accent-2: #00CEC9;
     --shadow: rgba(0, 0, 0, 0.35);
+    --dur-1: 0.15s;
+    --dur-2: 0.22s;
+    --dur-3: 0.3s;
+    --dur-4: 0.44s;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 @import '../components/layout/layout',
 '../pages/Dashboard/dashboard',
@@ -70,4 +82,23 @@ body {
 '../pages/Tasks/tasks',
 '../pages/Notes/notes',
 '../pages/Profile/profile',
-'../pages/Settings/settings'
+'../pages/Settings/settings';
+
+@keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes soft-pop {
+    from { opacity: 0; transform: translateY(14px) scale(0.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

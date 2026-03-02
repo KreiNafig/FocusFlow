@@ -8,7 +8,7 @@
 
 @mixin field-style($border-radius: 10px) {
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid #CAB18E;
     border-radius: $border-radius;
 
     &::placeholder {
@@ -62,6 +62,36 @@
         border-radius: 9px;
         height: 46vh;
         border: 2px solid black;
+        animation: fade-up var(--dur-4) var(--ease) both;
+
+        transition:
+            box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            box-shadow: 0 4px 18px 0 rgba(61, 39, 26, 0.08);
+            transform: translateY(-4px);
+        }
+
+        &.pinned {
+            box-shadow: 0 6px 28px 0 rgba(61,39,26,0.16);
+
+            .pin-note {
+                animation: pin 0.7s;
+            }
+        }
+
+        @keyframes pin {
+            from {
+                opacity: 0;
+                transform: translateY(-4px);
+            }
+            to {
+                opacity: 0.5;
+                transform: translateY(0px)
+            }
+        }
+
 
         header {
             div {
@@ -74,9 +104,26 @@
             }
         }
 
-
         .action-note {
             @include flex(row, 12px);
+
+            div {
+                border-radius: 10px;
+                transition:
+                    transform var(--dur-2) var(--ease),
+                    filter var(--dur-2) var(--ease),
+                    background-color var(--dur-2) var(--ease);
+
+                &:hover {
+                    transform: translateY(-2.5px);
+                    filter: brightness(1.08);
+                    background-color: rgba(255,255,255,0.12);
+                }
+                &:active {
+                    transform: translateY(1px);
+                    filter: brightness(0.98);
+                }
+            }
         }
 
         .note-text {
@@ -109,6 +156,12 @@
                 border: 1px solid black;
                 border-radius: 1px 10px 10px 1px;
                 background-color: #ba9f8c;
+                padding: 5px;
+                transition: transform 0.5s;
+
+                &:hover {
+                    transform: translateY(-4px);
+                }
             }
 
             data {
@@ -121,6 +174,11 @@
                 margin-left: 15px;
                 font-size: 0.95em;
                 opacity: 0.8;
+                transition: transform 0.5s;
+
+                &:hover {
+                    transform: translateY(-4px);
+                }
 
                 .time {
                     margin-left: 10px;
@@ -131,6 +189,8 @@
 }
 
 .update-note, .create-note {
+    animation: fade-up var(--dur-4) var(--ease) both;
+    
     h2 {
         @include textAlign;
     }
@@ -140,10 +200,18 @@
 
         article {
             @include flex(column, 7.5px);
-            width: 79vw;
+            padding: 16px;
+            background-color: var(--card);
+            border: 1px solid #CAB18E;
+            box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+            border-radius: 16px;
 
             textarea, input {
                 @include field-style();
+                padding: 6px;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.35);
+                width: 79vw;
             }
 
             textarea {

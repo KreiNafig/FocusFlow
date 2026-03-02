@@ -44,6 +44,12 @@
         @include flex(column, 0, center);
         @include card-style;
         position: relative;
+        animation: fade-up var(--dur-4) var(--ease) both;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:hover {
+            transform: translateY(-4px);
+        }
     
         .osnova-user {
             @include flex(column, 0, center);
@@ -70,6 +76,7 @@
                 background-color: var(--aside);
                 color: var(--text-aside);
                 padding: 15px 40px;
+                
 
                 .location-user {
                     @include flex(row, 0, stretch, space-between);
@@ -82,10 +89,18 @@
     .about-user {
         @include flex(row, 0, stretch, space-between);
         margin-top: 50px;
+        
 
         article {
             @include card-style;
             padding: 20px 30px;
+            animation: fade-up var(--dur-4) var(--ease) both;
+            animation-delay: 0.06s;
+            transition: transform var(--dur-3) var(--ease), box-shadow var(--dur-3) var(--ease);
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 14px 34px rgba(60, 30, 10, 0.12);
+            }
 
             h2 {
                 @include section-title(100px, var(--aside), 0);
@@ -110,5 +125,13 @@
     .update-user {
         @include flex(row, 0, stretch, center);
         margin-top: 10%;
+
+        transition: transform 0.15s;
+    &:hover {
+        transform: translateY(-2px) scale(1.03);
+    }
+    &:active {
+        transform: translateY(1px) scale(0.97);
+    }
     }
 }

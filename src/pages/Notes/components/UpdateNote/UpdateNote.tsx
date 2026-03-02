@@ -48,11 +48,11 @@ export const UpdateNote = () => {
         <form className="actions-note" onSubmit={handleSubmit}>
             <article>
             <label htmlFor="headline">Заголовок</label>
-            <input onChange={(e) => setTitle(e.target.value)} defaultValue={title} placeholder="Заголовок" />
+            <input onChange={(e) => setTitle(e.target.value)} defaultValue={title} placeholder="Введите заголовок..." />
             </article>
             <article>
             <label htmlFor="text-note">Текст</label>
-            <textarea id="text-note" onChange={(e) => setText(e.target.value)} defaultValue={text} placeholder="Текст" />
+            <textarea id="text-note" onChange={(e) => setText(e.target.value)} defaultValue={text} placeholder="Введите текст..." />
             </article>
             <ButtonElem widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Сохранить заметку</ButtonElem>
         </form>
