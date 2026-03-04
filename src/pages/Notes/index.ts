@@ -5,6 +5,7 @@ export interface INote {
     date: string;
     time: string;
     pin: boolean;
+    colorTask: string;
 }
 
 export interface NoteProps {

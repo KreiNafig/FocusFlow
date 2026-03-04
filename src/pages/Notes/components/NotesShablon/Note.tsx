@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import type { INote, NoteProps } from "../..";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -40,6 +40,41 @@ export const Note = ({ title }: NoteProps) => {
         localStorage.setItem("notes", JSON.stringify(updatedNotes));
         setNotes(updatedNotes);
     }
+    function handleChange(e: ChangeEvent<HTMLSelectElement>, id: number): void {
+      const data = localStorage.getItem("notes");
+      const notesArr: INote[] = data ? JSON.parse(data) : [];
+      let color = "";
+
+      switch(e.target.value) {
+        case "blue":
+          color = "blue";
+          break;
+        case "red":
+          color = "red";
+          break;
+        case "green":
+          color = "green";
+          break;
+        case "orange":
+          color = "orange";
+          break;
+        default:
+          color = "#e7d7c2";
+      }
+
+      const updatedNotes = notesArr.map((note) => {
+        if (note.id === id) {
+            return {
+                ...note,
+                colorTask: color,
+            };
+        }
+        return note;
+    });
+
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    setNotes(updatedNotes);
+    }
     
   return (
     <section className="notes-container">
@@ -50,7 +85,7 @@ export const Note = ({ title }: NoteProps) => {
         )
         .sort((a, b) => (b.pin ? 1 : 0) - (a.pin ? 1 : 0))
         .map((e) => (
-          <article className={`note-elem ${e.pin && "pinned"}`} key={e.id}>
+          <article style={{backgroundColor: `${e.colorTask}`}} className={`note-elem ${e.pin && "pinned"}`} key={e.id}>
             <div>
               <header>
                 <div>
@@ -82,12 +117,12 @@ export const Note = ({ title }: NoteProps) => {
             </div>
             <footer>
               <div className="footer-container">
-                <select>
-                  <option selected>Базовый цвет</option>
-                  <option>Синий цвет</option>
-                  <option>Красный цвет</option>
-                  <option>Зеленый цвет</option>
-                  <option>Оранжевый цвет</option>
+                <select defaultValue="base" onChange={(event) => handleChange(event, e.id)}>
+                  <option value="base">Базовый цвет</option>
+                  <option value="blue">Синий цвет</option>
+                  <option value="red">Красный цвет</option>
+                  <option value="green">Зеленый цвет</option>
+                  <option value="orange">Оранжевый цвет</option>
                 </select>
                 <data>
                   {e.date}

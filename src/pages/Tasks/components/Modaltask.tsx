@@ -1,18 +1,31 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useOutsideClick } from "../../../hooks/useOutsideClick";
 import type { IModal, ITask } from "..";
+import { useValidation } from "../../../hooks/useValidationInput";
 
 
 
 export const ModalTask = ({setTasks, onClose, openModal}: IModal) => {
-    const [task, setTask] = useState<string>("");
+    const isTaskCreate = useValidation('');
+    const [isValidation, setIsValidation] = useState(false);
     const modalRef = useRef<HTMLDivElement | null>(null)
 
+    useEffect(() => {
+        if(isTaskCreate.errorMessage) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
+            setIsValidation(true);
+        } else {
+            setIsValidation(false);
+        }
+    }, [isTaskCreate.errorMessage])
+
     useOutsideClick(modalRef, onClose, openModal);
+
     const handleCreate = (): void => {
+        if(!isTaskCreate.errorMessage) {
         const date = new Date();
         const createTask: ITask = {
-            task: task,
+            task: isTaskCreate.value,
             completed: false,
             dataCompleted: date.getDay(),
             id: Date.now()
@@ -25,13 +38,15 @@ export const ModalTask = ({setTasks, onClose, openModal}: IModal) => {
         setTasks(updateTasks);
         onClose();
     }
+    }
   return (
     <>
     <article className="modal">
         <div className="modal-container" ref={modalRef}>
             <h2>Создание Задачи</h2>
-            <input placeholder="Введите задачу" value={task} onChange={(e) => setTask(e.target.value)} />
-            <button onClick={() => handleCreate()}>Создать</button>
+            <input name="createTask" placeholder="Введите задачу" value={isTaskCreate.value} onChange={isTaskCreate.onChange} onBlur={isTaskCreate.onBlur} />
+            {(isTaskCreate.dirty && isTaskCreate.error) && <div style={{color: "red"}}>{isTaskCreate.errorMessage}</div>}
+            <button disabled={isValidation} onClick={() => handleCreate()}>Создать</button>
             <button onClick={onClose}>Закрыть</button>
         </div>
     </article>

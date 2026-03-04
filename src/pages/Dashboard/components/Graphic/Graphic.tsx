@@ -14,10 +14,21 @@ export const Graphic = () => {
     const [taskGraphic, setTaskGraphic] = useState<ITaskGraphic[]>([]);
 
     useEffect(() => {
+        try {
         const graphic = localStorage.getItem('data');
         if (graphic) {
             const parsedGraphic = JSON.parse(graphic);
-            setTaskGraphic(parsedGraphic);
+            if(parsedGraphic && Array.isArray(parsedGraphic)) {
+                setTaskGraphic(parsedGraphic);
+            } else {
+                setTaskGraphic([]);
+            }
+        } else {
+            setTaskGraphic([]);
+        }
+        } catch(e) {
+            console.log("Ошибка при разборе данных графика из localStorage:", e);
+            setTaskGraphic([]);
         }
     }, []);
 

@@ -4,7 +4,7 @@ import { PomodoroCircle } from '../../../../utils/Pomodoro';
 import { ButtonElem } from '../../../../components/ui/ButtonElem';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import BlockIcon from '@mui/icons-material/Block';
+import PauseIcon from '@mui/icons-material/Pause';
 import type { PomodoroMode } from '../..';
 
 
@@ -16,7 +16,9 @@ export const Pomodoro = () => {
   const [pause, setPause] = useState<boolean>(false)
   const [timePause, setTimePause] = useState<number>(0)
   const [isRunning, setRunning] = useState<boolean>(false)
+  const [isReset, setReset] = useState<boolean>(false)
   const [mode, setMode] = useState<PomodoroMode>('work');
+  const [isStarted, setIsStarted] = useState<boolean>(false)
 
   const WORK_TIME = 1500;
   const BREAK_TIME = 300;
@@ -57,6 +59,7 @@ export const Pomodoro = () => {
     setPause(false);
     setTimePause(0);
     setRunning(true);
+    setReset(false);
     timeRef.current = setInterval(() => {
       setNow(Date.now());
     }, 1000)
@@ -69,6 +72,7 @@ export const Pomodoro = () => {
     setTimePause(0);
     setRunning(false);
     setMode('work');
+    setReset(!isReset);
     hasSwitchedRef.current = false;
   }
   function handleStop(): void {
@@ -92,22 +96,23 @@ export const Pomodoro = () => {
       </header>
       <div className="dashboard-pomodoro">
         <PomodoroCircle totalTime={totalTimeSeconds} timeLeft={timeNow} />
-        <div className="pomodor-actions">
-          <div onClick={handleClick}>
+        <div>
+          {!isStarted 
+          ? <div onClick={() => {setIsStarted(true); handleClick()}}><ButtonElem padding="14px 14px" butColor="white" color="#795548">Start</ButtonElem></div>
+          : (
+          <div className="pomodor-actions">
+          {isReset ? <div onClick={() => handleClick()}><ButtonElem padding="14px 14px" butColor="white" color="#795548"><PlayArrowIcon /></ButtonElem></div>: <div onClick={() => {setPause(!pause); handleStop()}}>
             <ButtonElem padding="14px 14px" butColor="white" color="#795548">
-              <PlayArrowIcon />
+              {!pause ? <PauseIcon /> : <PlayArrowIcon />}
             </ButtonElem>
-          </div>
+          </div>}
           <div onClick={handleReset}>
             <ButtonElem padding="14px 14px" butColor="white" color="#795548">
               <RestartAltIcon />
             </ButtonElem>
           </div>
-          <div onClick={handleStop}>
-            <ButtonElem padding="14px 14px" butColor="white" color="#795548">
-              <BlockIcon />
-            </ButtonElem>
-          </div>
+          </div>)
+          }
         </div>
       </div>
     </article>

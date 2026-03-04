@@ -8,6 +8,14 @@ export const Profile = () => {
   const { data, refetch } = useGetProfileUserQuery("");
   const user = data && data.results[0];
 
+  if(!user) {
+    return (
+      <section className="loading-user">
+        <div>Загрузка пользователя....</div>
+      </section>
+    )
+  }
+
   return (
     <section className="user">
     <ProfileUser user={user} />

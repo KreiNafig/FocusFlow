@@ -367,6 +367,7 @@ body {
   padding: 12px 6px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.35);
+  height: 100%;
 }
 .dashboard-container .dashboard-tasks li {
   font-size: 1.1em;
@@ -492,7 +493,7 @@ body {
   border: 2px solid #292827;
   box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
   border-radius: 16px;
-  transition: box-shadow var(--dur-3) var(--ease), transform var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
+  transition: box-shadow var(--dur-3) var(--ease), background var(--dur-3) var(--ease), transform var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
   will-change: transform;
 }
 .button-element:hover {
@@ -503,6 +504,13 @@ body {
 .button-element:active {
   transform: translateY(0px);
   filter: brightness(0.98);
+}
+.button-element:disabled {
+  background-color: gray !important;
+  transition: background var(--dur-3) var(--ease);
+  box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08) !important;
+  filter: none !important;
+  transform: none !important;
 }
 
 .search-bar {
@@ -722,6 +730,13 @@ article {
 .modal-container button:active {
   transform: translateY(1px) scale(0.97);
   box-shadow: 0 1px 2px 0 rgba(61, 39, 26, 0.14);
+}
+.modal-container button:disabled {
+  background-color: gray !important;
+  transition: background var(--dur-3) var(--ease);
+  box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08) !important;
+  filter: none !important;
+  transform: none !important;
 }
 
 .search-action {

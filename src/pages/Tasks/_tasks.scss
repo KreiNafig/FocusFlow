@@ -213,5 +213,13 @@ article {
 
     button {
         @include button-main;
+
+        &:disabled {
+            background-color: gray !important;
+            transition: background var(--dur-3) var(--ease);
+            box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08) !important;
+            filter: none !important;
+            transform: none !important;
+        }
     }
 }

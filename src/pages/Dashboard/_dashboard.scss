@@ -69,6 +69,7 @@
         }
         ul {
             @include light-bg-block;
+            height: 100%;
         }
 
         li {
