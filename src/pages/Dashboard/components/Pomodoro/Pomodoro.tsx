@@ -91,23 +91,23 @@ export const Pomodoro = () => {
 
   return (
     <article className="dashboard-card">
-      <header style={{ marginBottom: "3vh" }}>
+      <header style={{ marginBottom: "1.5vh" }}>
         <h2>Pomodoro таймер:</h2>
       </header>
       <div className="dashboard-pomodoro">
         <PomodoroCircle totalTime={totalTimeSeconds} timeLeft={timeNow} />
         <div>
           {!isStarted 
-          ? <div onClick={() => {setIsStarted(true); handleClick()}}><ButtonElem padding="14px 14px" butColor="white" color="#795548">Start</ButtonElem></div>
+          ? <div className="pomodor-actions" onClick={() => {setIsStarted(true); handleClick()}}><ButtonElem padding="16px 32px" butColor="white" color="var(--button-color)">Start</ButtonElem></div>
           : (
           <div className="pomodor-actions">
-          {isReset ? <div onClick={() => handleClick()}><ButtonElem padding="14px 14px" butColor="white" color="#795548"><PlayArrowIcon /></ButtonElem></div>: <div onClick={() => {setPause(!pause); handleStop()}}>
-            <ButtonElem padding="14px 14px" butColor="white" color="#795548">
+          {isReset ? <div onClick={() => handleClick()}><ButtonElem padding="14px 14px" butColor="white" color="var(--button-color)"><PlayArrowIcon /></ButtonElem></div>: <div onClick={() => {setPause(!pause); handleStop()}}>
+            <ButtonElem padding="14px 14px" butColor="white" color="var(--button-color)">
               {!pause ? <PauseIcon /> : <PlayArrowIcon />}
             </ButtonElem>
           </div>}
           <div onClick={handleReset}>
-            <ButtonElem padding="14px 14px" butColor="white" color="#795548">
+            <ButtonElem padding="14px 14px" butColor="white" color="var(--button-color)">
               <RestartAltIcon />
             </ButtonElem>
           </div>

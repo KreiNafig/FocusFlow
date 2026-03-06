@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import { ButtonElem } from "../../components/ui/ButtonElem";
-import { Note } from "./components/NotesShablon/Note";
+import { Note } from "./components/Note Comp/NotesRender";
 import { InputElem } from "../../components/ui/InputElem";
 
 export const Notes = () => {

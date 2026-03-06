@@ -38,18 +38,42 @@ body {
     background-color: var(--bg);
     font-family: Inter;
     color: var(--text);
+
+    a {
+        color: var(--text);
+    }
 }
 :root {
-    /*Светлая тема (по умолчанию)*/ 
+    /* Светлая тема (по умолчанию) */
     --bg: #efeae3;
     --aside: #3D271A;
     --card: #e7d7c2;
     --line: unset;
     --text: #202020;
     --text-aside: #ECECEC;
+    --text-muted: rgba(32, 32, 32, 0.8);
+    --button-color: #482f20;
+    --error-color: #e34c44;
+    --error-border: #ff8860;
     --accent: #ffffff;
     --accent-2: #00CEC9;
     --shadow: rgba(0, 0, 0, 0.07);
+    --shadow-card: rgba(60, 30, 10, 0.08);
+    --shadow-hover: rgba(60, 30, 10, 0.12);
+    --shadow-strong: rgba(60, 30, 10, 0.18);
+    --shadow-focus: rgba(60, 30, 10, 0.14);
+    --border: #CAB18E;
+    --border-strong: #292827;
+    --overlay: rgba(255, 255, 255, 0.35);
+    --overlay-hover: rgba(255, 255, 255, 0.48);
+    --overlay-action: rgba(255, 255, 255, 0.12);
+    --input-bg: rgba(255, 255, 255, 0.35);
+    --nav-underline: rgba(255, 255, 255, 0.75);
+    --icon: #ffffff;
+    --modal-backdrop: rgba(0, 0, 0, 0.6);
+    --select-bg: #ba9f8c;
+    --aside-shadow: rgba(47, 27, 18, 0.25);
+    --aside-shadow-soft: rgba(47, 27, 18, 0.12);
     --dur-1: 0.15s;
     --dur-2: 0.22s;
     --dur-3: 0.3s;
@@ -59,16 +83,36 @@ body {
 }
 
 :root[data-theme="dark"] {
-    /*Темная тема*/
-    --bg: #1A1714;
-    --aside: #2D2621;
-    --card: #2D2621; 
-    --line: #CAB18E;
-    --text: #E5DED1;
-    --text-aside: #E5DED1;
-    --accent: #000000;
+    /* Тёмная тема */
+    --bg: #141210;
+    --aside: #231e1b;
+    --card: #2a2522;
+    --line: rgba(202, 177, 142, 0.5);
+    --text: #E8E2D9;
+    --text-aside: #E8E2D9;
+    --text-muted: rgba(232, 226, 217, 0.75);
+    --button-color: #4d382c;
+    --error-color: #95322c;
+    --error-border: #bd684b;
+    --accent: #1c1917;
     --accent-2: #00CEC9;
-    --shadow: rgba(0, 0, 0, 0.35);
+    --shadow: rgba(0, 0, 0, 0.25);
+    --shadow-card: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    --shadow-strong: rgba(0, 0, 0, 0.5);
+    --shadow-focus: rgba(202, 177, 142, 0.2);
+    --border: rgba(202, 177, 142, 0.45);
+    --border-strong: rgba(202, 177, 142, 0.7);
+    --overlay: rgba(255, 255, 255, 0.06);
+    --overlay-hover: rgba(255, 255, 255, 0.1);
+    --overlay-action: rgba(255, 255, 255, 0.08);
+    --input-bg: rgba(255, 255, 255, 0.06);
+    --nav-underline: rgba(232, 226, 217, 0.7);
+    --icon: #E8E2D9;
+    --modal-backdrop: rgba(0, 0, 0, 0.75);
+    --select-bg: #3d3630;
+    --aside-shadow: rgba(0, 0, 0, 0.4);
+    --aside-shadow-soft: rgba(0, 0, 0, 0.2);
     --dur-1: 0.15s;
     --dur-2: 0.22s;
     --dur-3: 0.3s;
@@ -76,13 +120,40 @@ body {
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.error {
+    color: #fff;
+    background: var(--error-color);
+    padding: 0.7em 1.2em;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    box-shadow: 0 3px 12px rgba(255, 69, 36, 0.08);
+    border: 2px solid var(--error-border);
+    margin: 2px 0 0 0;
+    display: inline-block;
+    letter-spacing: 0.1em;
+    animation: error-pop 0.3s ease;
+}
+
+@keyframes error-pop {
+    0% { 
+        opacity: 0;
+        transform: translateY(-6px) scale(0.98);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
 @import '../components/layout/layout',
 '../pages/Dashboard/dashboard',
 '../components/styleComponent.scss',
 '../pages/Tasks/tasks',
 '../pages/Notes/notes',
 '../pages/Profile/profile',
-'../pages/Settings/settings';
+'../pages/Settings/settings',
+'../pages/NotFound/notFound';
 
 @keyframes fade-up {
     from { opacity: 0; transform: translateY(10px); }

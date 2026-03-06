@@ -15,10 +15,12 @@ export const UpdateNote = () => {
         const notesStorage = localStorage.getItem("notes");
         const data: INote[] = notesStorage ? JSON.parse(notesStorage) : [];
             if (notesStorage && noteId.id !== undefined) {
-                const note: INote | undefined = data.find((e) => e.id === +noteId.id!);
-                if (note) {
-                    isTitle.setValueForce(note.title);
-                    isText.setValueForce(note.text);
+                const note: INote[] | undefined = data.filter((e) => e.id === +noteId.id!);
+                if (note && note.length > 0) {
+                    isTitle.setValueForce(note[0].title);
+                    isText.setValueForce(note[0].text);
+                } else {
+                    navigate("/error");
                 }
             }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,14 +64,14 @@ export const UpdateNote = () => {
             <article>
             <label htmlFor="titleNote">Заголовок</label>
             <input id="titleNote" name="title" value={isTitle.value} onChange={isTitle.onChange} onBlur={isTitle.onBlur} placeholder="Введите заголовок..." />
-            {(isTitle.dirty && isTitle.error) && <div style={{color: "red"}}>{isTitle.errorMessage}</div>}
+            {(isTitle.dirty && isTitle.error && isTitle.errorMessage) && <div className="error">{isTitle.errorMessage}</div>}
             </article>
             <article>
             <label htmlFor="text-note">Текст</label>
             <textarea id="text-note" name="text" value={isText.value} onChange={isText.onChange} onBlur={isText.onBlur} placeholder="Введите текст..." />
-            {(isText.dirty && isText.error) && <div style={{color: "red"}}>{isText.errorMessage}</div>}
+            {(isText.dirty && isText.error && isText.errorMessage) && <div className="error">{isText.errorMessage}</div>}
             </article>
-            <ButtonElem disable={isValidation} widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)">Сохранить заметку</ButtonElem>
+            <ButtonElem disable={isValidation} widthElem="300px" heightElem="60px" butColor="white" color="var(--button-color)">Сохранить заметку</ButtonElem>
         </form>
     </div>
   )

@@ -43,7 +43,7 @@ export const PomodoroCircle = ({
           style={{ display: "block" }}
         >
           <circle
-            stroke="var(--aside)"
+            stroke="var(--overlay)"
             strokeOpacity={0.15}
             fill="transparent"
             strokeWidth={stroke}

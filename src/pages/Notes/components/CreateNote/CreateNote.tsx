@@ -33,6 +33,7 @@ export const CreateNote = () => {
             time: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()}`,
             pin: false,
             colorTask: "#e7d7c2",
+            color: "base",
         }
 
         const existingTasks = localStorage.getItem("notes");
@@ -49,14 +50,14 @@ export const CreateNote = () => {
             <article>
             <label htmlFor="headline">Заголовок</label>
             <input id="headline" name="title" value={isTitle.value} onChange={isTitle.onChange} onBlur={isTitle.onBlur} placeholder='Введите заголовок...' />
-            {(isTitle.dirty && isTitle.error) && <div style={{color: "red"}}>{isTitle.errorMessage}</div>}
+            {(isTitle.dirty && isTitle.error && isTitle.errorMessage) && <div style={{display: `${(isTitle.dirty && isTitle.error) ? "block" : "none"}`}} className="error">{isTitle.errorMessage}</div>}
             </article>
             <article>
             <label htmlFor="text-note">Текст</label>
             <textarea id="text-note" name="text" value={isText.value} onChange={isText.onChange} onBlur={isText.onBlur} placeholder='Введите текст...' />
-            {(isText.dirty && isText.error) && <div style={{color: "red"}}>{isText.errorMessage}</div>}
+            {(isText.dirty && isText.error && isText.errorMessage) && <div className="error">{isText.errorMessage}</div>}
             </article>
-            <ButtonElem disable={isValidation} widthElem="300px" heightElem="60px" butColor="white" color="var(--aside)" padding="10px 20px">Создать заметку</ButtonElem>
+            <ButtonElem disable={isValidation} widthElem="300px" heightElem="60px" butColor="white" color="var(--button-color)" padding="10px 20px">Создать заметку</ButtonElem>
         </form>
     </div>
   )

@@ -45,7 +45,7 @@ export const ModalTask = ({setTasks, onClose, openModal}: IModal) => {
         <div className="modal-container" ref={modalRef}>
             <h2>Создание Задачи</h2>
             <input name="createTask" placeholder="Введите задачу" value={isTaskCreate.value} onChange={isTaskCreate.onChange} onBlur={isTaskCreate.onBlur} />
-            {(isTaskCreate.dirty && isTaskCreate.error) && <div style={{color: "red"}}>{isTaskCreate.errorMessage}</div>}
+            {(isTaskCreate.dirty && isTaskCreate.error && isTaskCreate.errorMessage) && <div className="error">{isTaskCreate.errorMessage}</div>}
             <button disabled={isValidation} onClick={() => handleCreate()}>Создать</button>
             <button onClick={onClose}>Закрыть</button>
         </div>

@@ -1,6 +1,6 @@
 .button-element {
-        border: 2px solid #292827;
-        box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+        border: 2px solid var(--border-strong);
+        box-shadow: 0 8px 20px var(--shadow-card);
         border-radius: 16px;
         transition:
             box-shadow var(--dur-3) var(--ease),
@@ -10,7 +10,7 @@
         will-change: transform;
 
         &:hover {
-            box-shadow: 0 10px 26px rgba(60, 30, 10, 0.12);
+            box-shadow: 0 10px 26px var(--shadow-hover);
             filter: brightness(1.03);
             transform: translateY(-2px);
         }
@@ -22,7 +22,8 @@
         &:disabled {
             background-color: gray !important;
             transition: background var(--dur-3) var(--ease);
-            box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08) !important;
+            color: var(--text-muted) !important;
+            box-shadow: 0 8px 20px var(--shadow-card) !important;
             filter: none !important;
             transform: none !important;
         }
@@ -33,7 +34,7 @@
         width: 300px;
         padding: 15px 15px;
         box-sizing: border-box;
-        border: 2px solid black;
+        border: 2px solid var(--border-strong);
         border-radius: 20px;
         color: var(--text);
         background-color: var(--accent);
@@ -49,7 +50,7 @@
 
         &:focus,
         &:focus-visible {
-            box-shadow: 0 6px 22px rgba(60, 30, 10, 0.12);
+            box-shadow: 0 6px 22px var(--shadow-hover);
             transform: translateY(-1px);
         }
     }

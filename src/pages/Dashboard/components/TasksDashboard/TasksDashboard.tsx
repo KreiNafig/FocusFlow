@@ -29,9 +29,8 @@ export const TasksDashboard = () => {
                 <li key={e.id}>{e.task}</li>
             )) 
             : "Список задач пуст"}
-            <br />
-            <Link to="/tasks" style={{color: "black"}}>Развернуть список</Link>
         </ul>
+        <Link to="/tasks">Развернуть список</Link>
     </article>
   )
 }

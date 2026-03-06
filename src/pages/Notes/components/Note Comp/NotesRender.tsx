@@ -45,28 +45,25 @@ export const Note = ({ title }: NoteProps) => {
       const notesArr: INote[] = data ? JSON.parse(data) : [];
       let color = "";
 
-      switch(e.target.value) {
-        case "blue":
-          color = "blue";
-          break;
-        case "red":
-          color = "red";
-          break;
-        case "green":
-          color = "green";
-          break;
-        case "orange":
-          color = "orange";
-          break;
-        default:
-          color = "#e7d7c2";
-      }
+      const isDarkTheme: string = localStorage.getItem("layout") || '';
+      const updateDarkTheme: boolean = isDarkTheme && JSON.parse(isDarkTheme);
+      const colors: Record<string, { light: string; dark: string }> = {
+        blue: { light: "#2A284E", dark: "#C2C3E7" },
+        red: { light: "#763230", dark: "#FF7770" },
+        green: { light: "#535D2B", dark: "#CAE7C2" },
+        orange: { light: "#A35D44", dark: "#FFB770" },
+        default: { light: "#755C49", dark: "#e7d7c2" }
+      };
+
+      const selectedColorKey = e.target.value in colors ? e.target.value : "default";
+      color = !updateDarkTheme ? colors[selectedColorKey].dark : colors[selectedColorKey].light;
 
       const updatedNotes = notesArr.map((note) => {
         if (note.id === id) {
             return {
                 ...note,
                 colorTask: color,
+                color: e.target.value,
             };
         }
         return note;
@@ -74,6 +71,22 @@ export const Note = ({ title }: NoteProps) => {
 
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
     setNotes(updatedNotes);
+    }
+
+    function mountColor(eventColor: string): string {
+      const isDarkTheme: string = localStorage.getItem("layout") || '';
+      const updateDarkTheme: boolean = isDarkTheme && JSON.parse(isDarkTheme);
+      const colors: Record<string, { light: string; dark: string }> = {
+        blue: { light: "#2A284E", dark: "#C2C3E7" },
+        red: { light: "#763230", dark: "#FF7770" },
+        green: { light: "#535D2B", dark: "#CAE7C2" },
+        orange: { light: "#A35D44", dark: "#FFB770" },
+        default: { light: "#2a2522", dark: "#e7d7c2" }
+      };
+
+      const selectedColorKey = eventColor in colors ? eventColor : "default";
+      const color = !updateDarkTheme ? colors[selectedColorKey].dark : colors[selectedColorKey].light;
+      return color;
     }
     
   return (
@@ -85,7 +98,7 @@ export const Note = ({ title }: NoteProps) => {
         )
         .sort((a, b) => (b.pin ? 1 : 0) - (a.pin ? 1 : 0))
         .map((e) => (
-          <article style={{backgroundColor: `${e.colorTask}`}} className={`note-elem ${e.pin && "pinned"}`} key={e.id}>
+          <article style={{backgroundColor: `${mountColor(e.color)}`}} className={`note-elem ${e.pin && "pinned"}`} key={e.id}>
             <div>
               <header>
                 <div>
@@ -110,14 +123,18 @@ export const Note = ({ title }: NoteProps) => {
                   </div>
                 </div>
               </header>
+            </div>
+            <Link to={`/notes/${e.id}`}>
+              <div className="text-container">
               <p className="note-text">
                 {e.text.slice(0, 450)}
                 {e.text.length > 356 && "..."}
               </p>
-            </div>
+              </div>
+              </Link>
             <footer>
               <div className="footer-container">
-                <select defaultValue="base" onChange={(event) => handleChange(event, e.id)}>
+                <select defaultValue={`${e.color}`} onChange={(event) => handleChange(event, e.id)}>
                   <option value="base">Базовый цвет</option>
                   <option value="blue">Синий цвет</option>
                   <option value="red">Красный цвет</option>

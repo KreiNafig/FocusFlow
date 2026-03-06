@@ -6,13 +6,13 @@
     justify-content: $justify;
 }
 
-@mixin card-style($border-radius: 10px, $border-color: #CAB18E) {
+@mixin card-style($border-radius: 10px, $border-color: var(--border)) {
     background-color: var(--card);
     border: 2px solid #{$border-color};
     border-radius: $border-radius;
 }
 
-@mixin section-title($width: 75px, $border-color: var(--aside), $top-offset: -5px) {
+@mixin section-title($width: 75px, $border-color: var(--text), $top-offset: -5px) {
     position: relative;
     height: 34px;
     &::before {
@@ -30,7 +30,7 @@
 
 @mixin light-bg-block {
     border-radius: 12px;
-    background: rgba(255,255,255,0.35);
+    background: var(--overlay);
 }
 
 
@@ -66,7 +66,7 @@
 
             .name-user {
                 margin-bottom: 20px;
-                @include section-title(75px, var(--aside), -5px);
+                @include section-title(75px, var(--text), -5px);
             }
 
             .dob-info {
@@ -99,11 +99,11 @@
             transition: transform var(--dur-3) var(--ease), box-shadow var(--dur-3) var(--ease);
             &:hover {
                 transform: translateY(-3px);
-                box-shadow: 0 14px 34px rgba(60, 30, 10, 0.12);
+                box-shadow: 0 14px 34px var(--shadow-hover);
             }
 
             h2 {
-                @include section-title(100px, var(--aside), 0);
+                @include section-title(100px, var(--text), 0);
             }
 
             .about-info {

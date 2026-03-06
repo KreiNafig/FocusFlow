@@ -8,7 +8,7 @@
 
 @mixin field-style($border-radius: 10px) {
     padding: 10px;
-    border: 1px solid #CAB18E;
+    border: 1px solid var(--border);
     border-radius: $border-radius;
 
     &::placeholder {
@@ -39,11 +39,11 @@
         width: 300px;
         padding: 15px 15px;
         box-sizing: border-box;
-        border: 2px solid black;
+        border: 2px solid var(--border-strong);
         border-radius: 20px;
 
         &::placeholder {
-            color: black;
+            color: var(--text);
         }
     }
 }
@@ -58,27 +58,31 @@
 
     .note-elem {
         @include flex(column, 0, stretch, space-between);
-        background-color: var(--card);
         border-radius: 9px;
         height: 46vh;
-        border: 2px solid black;
+        border: 1.5px solid var(--border-strong);
         animation: fade-up var(--dur-4) var(--ease) both;
 
         transition:
             box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+            background-color var(--dur-3) var(--ease),
             transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-            box-shadow: 0 4px 18px 0 rgba(61, 39, 26, 0.08);
+            box-shadow: 0 4px 18px 0 var(--shadow-card);
             transform: translateY(-4px);
         }
 
         &.pinned {
-            box-shadow: 0 6px 28px 0 rgba(61,39,26,0.16);
+            box-shadow: 0 6px 28px 0 var(--shadow-hover);
 
             .pin-note {
                 animation: pin 0.7s;
             }
+        }
+
+        a {
+            height: 100%;
         }
 
         @keyframes pin {
@@ -117,7 +121,7 @@
                 &:hover {
                     transform: translateY(-2.5px);
                     filter: brightness(1.08);
-                    background-color: rgba(255,255,255,0.12);
+                    background-color: var(--overlay-action);
                 }
                 &:active {
                     transform: translateY(1px);
@@ -126,17 +130,28 @@
             }
         }
 
+        .text-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+        }
+
         .note-text {
             padding: 9px;
             word-break: break-all;
             line-height: 2.5vh;
             width: 100%;
+            color: var(--text);
         }
         header {
             @include flex(row, 0, stretch, space-between);
             background-color: var(--aside);
             color: var(--text-aside);
             padding: 9px;
+            border-top-right-radius: 7px;
+            border-top-left-radius: 7px;
+            border: 1px solid var(--aside);
 
             svg {
                 background-color: var(--aside);
@@ -153,9 +168,10 @@
             }
 
             select {
-                border: 1px solid black;
+                border: 1px solid var(--border-strong);
                 border-radius: 1px 10px 10px 1px;
-                background-color: #ba9f8c;
+                color: var(--text);
+                background-color: var(--select-bg);
                 padding: 5px;
                 transition: transform 0.5s;
 
@@ -167,7 +183,7 @@
             data {
                 @include flex(row, 10px);
                 background-color: var(--shadow);
-                border: 1px solid black;
+                border: 1px solid var(--border-strong);
                 border-right: unset;
                 border-radius: 10px 1px 1px 10px;
                 padding: 10px;
@@ -202,21 +218,97 @@
             @include flex(column, 7.5px);
             padding: 16px;
             background-color: var(--card);
-            border: 1px solid #CAB18E;
-            box-shadow: 0 8px 20px rgba(60, 30, 10, 0.08);
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 20px var(--shadow-card);
             border-radius: 16px;
 
             textarea, input {
                 @include field-style();
                 padding: 6px;
                 border-radius: 12px;
-                background: rgba(255, 255, 255, 0.35);
+                background: var(--input-bg);
+                color: var(--text);
                 width: 79vw;
             }
 
             textarea {
                 height: 50vh;
                 resize: none;
+            }
+        }
+    }
+}
+
+.note-elem-id {
+    margin: 5vh auto;
+    width: 955px;
+    min-height: 350px;
+    box-shadow: var(--shadow-card) 0px 6px 28px 0px;
+    padding: 36px;
+    background: var(--card);
+    border-radius: 16px;
+    border: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: span-fadeup var(--dur-4) var(--ease);
+
+    header {
+        margin-bottom: 6px;
+        
+        h2 {
+            font-weight: 600;
+            font-size: 32px;
+            text-align: left;
+            color: var(--text);
+        }
+    }
+    
+    section {
+        flex-grow: 1;
+
+        p {
+            font-size: 18px;
+            white-space: pre-line;
+            color: var(--text);
+            line-height: 1.55;
+        }
+    }
+
+    footer {
+        text-align: right;
+        display: inline-block;
+
+        div {
+            display: inline-block;
+            color: var(--text);
+            font-size: 15px;
+            font-family: monospace;
+            letter-spacing: 0.2px;
+            padding: 10px;
+            background-color: var(--shadow);
+            border: 2px solid var(--border-strong);
+            border-radius: 10px;
+            transition: transform var(--dur-3) var(--ease);
+
+            &:hover {
+                transform: translateY(-1.6px);
+            }
+
+        @keyframes span-fadeup {
+            from {
+                opacity: 0.2;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+            time {
+                font-weight: 400;
+                color: var(--text-muted);
             }
         }
     }

@@ -1,11 +1,11 @@
-@mixin card-style($border-radius: 10px, $border-color: #CAB18E) {
+@mixin card-style($border-radius: 10px, $border-color: var(--border)) {
     background-color: var(--card);
     border: 2px solid #{$border-color};
     border-radius: $border-radius;
     padding: 20px;
 }
 
-@mixin section-title($width: 80px, $border-color: var(--aside), $top-offset: -50%, $left: 3.62%) {
+@mixin section-title($width: 80px, $border-color: var(--text), $top-offset: -50%, $left: 3.62%) {
     font-weight: bold;
     margin-bottom: 20px;
     position: relative;
@@ -29,7 +29,7 @@
     gap: 8px;
     padding: $padding;
     border-radius: $border-radius;
-    background: rgba(255,255,255,0.35);
+    background: var(--overlay);
 }
 
 @mixin flex-center($gap: 6px) {

@@ -39,7 +39,7 @@ export const Graphic = () => {
             </header>
             <div className="chart-wrapper">
                 <div className="progress-bar">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ResponsiveContainer style={{background: "var(--overlay)", borderRadius: "12px",}} width="100%" height="100%">
                         <BarChart
                             data={taskGraphic}
                             margin={{ top: 40, bottom: 5, left: 0, right: 0 }}

@@ -2,15 +2,18 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export const LayoutButton = () => {
-    const [isOn, setIsOn] = useState<boolean>(false);
+    const stored = localStorage.getItem("layout");
+    const [isOn, setIsOn] = useState<boolean>(stored === "true");
 
     const toggleSwitch = () => setIsOn(!isOn)
 
     useEffect((): void => {
         if (isOn) {
             document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem("layout", "true");
         } else {
             document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem("layout", "false");
         }
     }, [isOn])
 

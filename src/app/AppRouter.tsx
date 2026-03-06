@@ -9,6 +9,7 @@ import { NotFound } from "../pages/NotFound/NotFound"
 import { CreateNote } from "../pages/Notes/components/CreateNote/CreateNote"
 import { UpdateNote } from "../pages/Notes/components/UpdateNote/UpdateNote"
 import { useEffect } from "react"
+import { Note } from "../pages/Notes/components/Note Comp/Note"
 
 function App() {
   const newData = [
@@ -20,6 +21,19 @@ function App() {
     { name: 'Пт', tasks: 0 },
     { name: 'Сб', tasks: 0 },
 ];
+
+useEffect(() => {
+  try {
+    const layout = localStorage.getItem("layout");
+    if (layout === "true") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  } catch (e) {
+    console.warn("Ошибка чтения темы из localStorage:", e);
+  }
+}, []);
 
 useEffect(() => {
   const data = localStorage.getItem("data");
@@ -36,6 +50,7 @@ useEffect(() => {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/tasks' element={<Tasks />} />
           <Route path='/notes' element={<Notes />} />
+          <Route path='/notes/:id' element={<Note />} />
           <Route path='/notes/new' element={<CreateNote />} />
           <Route path='/notes/update/:id' element={<UpdateNote />} />
           <Route path='/profile' element={<Profile />} />

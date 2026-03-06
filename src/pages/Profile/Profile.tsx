@@ -22,7 +22,7 @@ export const Profile = () => {
     <AboutUser user={user} />
     <div onClick={() => refetch()} className="update-user">
       <ButtonElem 
-          color="var(--aside)" 
+          color="var(--button-color)" 
           butColor="var(--text-aside)" 
           widthElem="250px" 
           heightElem="50px">Обновить Пользователя</ButtonElem>
