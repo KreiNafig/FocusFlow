@@ -22,7 +22,7 @@ export const  Dashboard = () => {
                 <PhotoCat />
             </section>
             <section className="dashboard-container">
-                <div style={{width: "90vw"}} className="dashboard-card">Придумаю позже что тут будет</div>
+                <div style={{width: "90vw", display: "flex", justifyContent: "center"}} className="dashboard-card">Krein Project ®</div>
             </section>
         </div>
       )

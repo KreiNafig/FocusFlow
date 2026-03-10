@@ -85,17 +85,6 @@
             height: 100%;
         }
 
-        @keyframes pin {
-            from {
-                opacity: 0;
-                transform: translateY(-4px);
-            }
-            to {
-                opacity: 0.5;
-                transform: translateY(0px)
-            }
-        }
-
 
         header {
             div {
@@ -156,6 +145,7 @@
             svg {
                 background-color: var(--aside);
                 color: var(--text-aside);
+                cursor: pointer;
             }
         }
         footer {
@@ -346,7 +336,7 @@
         .actions-note {
             article {
                 width: 100%;
-                
+
                 textarea,
                 input {
                     width: 100%;

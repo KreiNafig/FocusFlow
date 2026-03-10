@@ -30,6 +30,13 @@ export const Settings = () => {
                 <p>Мой GitHub: <a href="https://github.com/KreiNafig">Krein</a></p>
             </div>
         </section>
+        <section className="Contacts">
+            <header><h2>Связь со мной:</h2></header>
+            <div className="text-settings">
+            <p>Email: kreinafig@gmail.com</p>
+            <p>Telegram: @lkreinl</p>
+            </div>
+        </section>
     </div>
   )
 }

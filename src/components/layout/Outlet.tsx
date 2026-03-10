@@ -40,7 +40,7 @@ export const Outlet = () => {
     <div className="container">
       <aside ref={asideRef} className={`${openBurger ? 'active' : ''}`}>
         <header>
-          <h1>Krein</h1>
+          <h1>FocusFlow</h1>
         </header>
         <section>
           {arrayLink.map((e) => {

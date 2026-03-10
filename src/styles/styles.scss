@@ -223,6 +223,17 @@ body {
         transform: translateY(0) scale(1);
     }
 }
+
+@keyframes pin {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 0.5;
+        transform: translateY(0px)
+    }
+}
 @import '../components/layout/layout',
 '../pages/Dashboard/dashboard',
 '../components/styleComponent.scss',

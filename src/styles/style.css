@@ -273,6 +273,16 @@ body a {
     transform: translateY(0) scale(1);
   }
 }
+@keyframes pin {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 0.5;
+    transform: translateY(0px);
+  }
+}
 .container {
   display: flex;
   align-items: stretch;
@@ -290,6 +300,7 @@ body a {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   z-index: 999;
+  animation: background-pop var(--dur-4) alternate;
 }
 .container aside header h1 {
   color: var(--text-aside);
@@ -790,6 +801,7 @@ body a {
   padding: 24px;
   width: 100%;
   min-height: 65vh;
+  animation: fade-up var(--dur-4) var(--ease) both;
 }
 
 .tasks-header {
@@ -1138,16 +1150,6 @@ article {
 .notes-container .note-elem a {
   height: 100%;
 }
-@keyframes pin {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 0.5;
-    transform: translateY(0px);
-  }
-}
 .notes-container .note-elem header div {
   display: flex;
   flex-direction: row;
@@ -1208,6 +1210,7 @@ article {
 .notes-container .note-elem header svg {
   background-color: var(--aside);
   color: var(--text-aside);
+  cursor: pointer;
 }
 .notes-container .note-elem footer {
   display: flex;
@@ -1695,7 +1698,10 @@ article {
 .settings-container {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 35px;
+}
+.settings-container:last-child {
+  margin-bottom: 35px;
 }
 .settings-container section {
   background-color: var(--card);

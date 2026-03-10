@@ -43,7 +43,11 @@
 .settings-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 35px;
+
+    &:last-child {
+        margin-bottom: 35px;
+    }
 
     section {
         @include card-style();

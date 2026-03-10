@@ -30,7 +30,7 @@ export const TasksDashboard = () => {
             .map((e) => (
                 <li key={e.id}>{e.task}</li>
             )) 
-            : "Список задач пуст"}
+            : <div style={{textAlign: "center"}}>Список задач пуст</div>}
         </ul>
         <Link to="/tasks" className="task-dashboard-button">Развернуть список <ArrowRightAltIcon /></Link>
     </article>

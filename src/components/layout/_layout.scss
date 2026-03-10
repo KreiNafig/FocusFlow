@@ -17,6 +17,7 @@
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
         z-index: 999;
+        animation: background-pop var(--dur-4) alternate;
 
         header {
             h1 {
