@@ -6,7 +6,6 @@ FocusFlow — это современный **productivity dashboard**, созд
 
 Проект создан как **pet-project frontend-разработчика** для демонстрации навыков построения современных React-приложений.
 
---
 
 # ✨ Features
 
@@ -62,12 +61,10 @@ FocusFlow — это современный **productivity dashboard**, созд
 - tablet
 - mobile устройствах
 
---
 
 # 📸 Screenshots
 Soon
 
---
 
 # 🛠 Tech Stack
 
@@ -101,7 +98,6 @@ Soon
 ### Storage
 - LocalStorage
 
---
 
 # 📦 Installation
 
@@ -114,7 +110,7 @@ npm install
 
 npm run dev
 ```
---
+
 
 # 👨‍💻 Author
 
