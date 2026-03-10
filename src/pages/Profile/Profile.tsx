@@ -2,6 +2,7 @@ import { ButtonElem } from "../../components/ui/ButtonElem";
 import { useGetProfileUserQuery } from "../../store/api/RandomProfile/randomProfile"
 import { AboutUser } from "./components/AboutUser/AboutUser";
 import { ProfileUser } from "./components/ProfileUser/ProfileUser";
+import { Sync } from '@mui/icons-material';
 
 
 export const Profile = () => {
@@ -11,7 +12,8 @@ export const Profile = () => {
   if(!user) {
     return (
       <section className="loading-user">
-        <div>Загрузка пользователя....</div>
+          <Sync />
+        <div>Загрузка пользователя...</div>
       </section>
     )
   }

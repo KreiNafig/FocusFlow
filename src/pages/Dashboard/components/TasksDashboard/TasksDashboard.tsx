@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ITask } from '../../../Tasks';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 export const TasksDashboard = () => {
     const [tasks, setTasks] = useState<ITask[]>([]);
@@ -11,6 +12,7 @@ export const TasksDashboard = () => {
 
         if(arrayTasks) {
             parsedTasks = JSON.parse(arrayTasks);
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setTasks(parsedTasks)
         }
     }, [])
@@ -30,7 +32,7 @@ export const TasksDashboard = () => {
             )) 
             : "Список задач пуст"}
         </ul>
-        <Link to="/tasks">Развернуть список</Link>
+        <Link to="/tasks" className="task-dashboard-button">Развернуть список <ArrowRightAltIcon /></Link>
     </article>
   )
 }

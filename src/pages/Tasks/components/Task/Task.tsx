@@ -69,8 +69,10 @@ export const Task = ({ taskSearch, tasks, setTasks }: TaskProps) => {
             .filter((e) => taskSearch ? e.task.toLowerCase().includes(taskSearch.toLowerCase()) : true)
             .map((e) => (
             <div key={e.id} className={`task task-visible`}>
+                <div className="task-text">
                 <h3>{e.task}</h3>
                 <p>{e.completed ? "Completed" : "Procces"}</p>
+                </div>
                 <div className="actions-task">
                 <input type="checkbox"  checked={e.completed} onChange={() => handleChecked(e.id, e.completed)}/>
                 <button onClick={() => handleDelete(e.id, e.completed, e.dataCompleted)}>Удалить</button>

@@ -9,7 +9,7 @@ export const PhotoCat = () => {
         <header style={{marginBottom: "2.4vh"}}>
             <h3>Фотография кота</h3>
         </header>
-        <img className="img-cat" src={randomPhoto ? randomPhoto[0]?.url : ``} />
+        <img className="img-cat" src={randomPhoto && randomPhoto[0]?.url} alt="cat" />
     </div>
   )
 }

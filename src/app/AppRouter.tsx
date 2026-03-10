@@ -1,15 +1,8 @@
 import { Route, Routes } from "react-router-dom"
-import {Dashboard} from "../pages/Dashboard/Dashboard"
 import { Outlet } from "../components/layout/Outlet"
-import { Tasks } from "../pages/Tasks/Tasks"
-import { Notes } from "../pages/Notes/Notes"
-import { Profile } from "../pages/Profile/Profile"
-import { Settings } from "../pages/Settings/Settings"
 import { NotFound } from "../pages/NotFound/NotFound"
-import { CreateNote } from "../pages/Notes/components/CreateNote/CreateNote"
-import { UpdateNote } from "../pages/Notes/components/UpdateNote/UpdateNote"
 import { useEffect } from "react"
-import { Note } from "../pages/Notes/components/Note Comp/Note"
+import { lazy, Suspense } from "react";
 
 function App() {
   const newData = [
@@ -42,11 +35,22 @@ useEffect(() => {
   }
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
+
+const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard").then(module => ({ default: module.Dashboard })));
+const Tasks = lazy(() => import("../pages/Tasks/Tasks").then(module => ({ default: module.Tasks })));
+const Notes = lazy(() => import("../pages/Notes/Notes").then(module => ({ default: module.Notes })));
+const Note = lazy(() => import("../pages/Notes/components/Note Comp/Note").then(module => ({ default: module.Note })));
+const CreateNote = lazy(() => import("../pages/Notes/components/CreateNote/CreateNote").then(module => ({ default: module.CreateNote })));
+const UpdateNote = lazy(() => import("../pages/Notes/components/UpdateNote/UpdateNote").then(module => ({ default: module.UpdateNote })));
+const Profile = lazy(() => import("../pages/Profile/Profile").then(module => ({ default: module.Profile })));
+const Settings = lazy(() => import("../pages/Settings/Settings").then(module => ({ default: module.Settings })));
+
    
   return (  
     <>
+    <Suspense fallback={(<h1 className="loading-page">Загрузка страницы...</h1>)}>
       <Routes >
-        <Route path='/' element={<Outlet />}>
+        <Route element={<Outlet />}>
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/tasks' element={<Tasks />} />
           <Route path='/notes' element={<Notes />} />
@@ -58,6 +62,7 @@ useEffect(() => {
         </Route>
           <Route path='*' element={<NotFound />} />
       </Routes>
+      </Suspense>
     </>
   )
 }

@@ -19,6 +19,7 @@ export const Graphic = () => {
         if (graphic) {
             const parsedGraphic = JSON.parse(graphic);
             if(parsedGraphic && Array.isArray(parsedGraphic)) {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setTaskGraphic(parsedGraphic);
             } else {
                 setTaskGraphic([]);
@@ -39,7 +40,7 @@ export const Graphic = () => {
             </header>
             <div className="chart-wrapper">
                 <div className="progress-bar">
-                    <ResponsiveContainer style={{background: "var(--overlay)", borderRadius: "12px",}} width="100%" height="100%">
+                    <ResponsiveContainer style={{background: "var(--overlay)", borderRadius: "12px", padding: "0px 20px 0px 0px"}} width="100%" height="100%">
                         <BarChart
                             data={taskGraphic}
                             margin={{ top: 40, bottom: 5, left: 0, right: 0 }}

@@ -5,11 +5,10 @@ import { Pomodoro } from './components/Pomodoro/Pomodoro';
 import { PhotoCat } from './components/PhotoCat/PhotoCat';
 import { RandomQuote } from './components/RandomQuote/RandomQuote';
 
-
 export const  Dashboard = () => {
 
     return (
-        <div>
+        <div className="dashboard">
             <section className="dashboard-container">
                 <div className="dasboard-container-column">
                     <RandomQuote />

@@ -30,7 +30,7 @@ export const CreateNote = () => {
             title: isTitle.value,
             text: isText.value,
             date: `${date.getDate()} ${monthNames[date.getMonth()]}`,
-            time: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()}`,
+            time: `${date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()}`,
             pin: false,
             colorTask: "#e7d7c2",
             color: "base",

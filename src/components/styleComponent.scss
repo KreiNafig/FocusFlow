@@ -53,4 +53,14 @@
             box-shadow: 0 6px 22px var(--shadow-hover);
             transform: translateY(-1px);
         }
+}
+
+@media (max-width: 1024px) {
+    .button-element {
+        width: 100%;
     }
+
+    .search-bar {
+        width: 100%;
+    }
+}

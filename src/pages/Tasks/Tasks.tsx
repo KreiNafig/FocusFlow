@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { ButtonElem } from "../../components/ui/ButtonElem";
 import { Task } from "./components/Task/Task";
 import { InputElem } from "../../components/ui/InputElem";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 
 export const Tasks = () => {
@@ -46,7 +47,12 @@ export const Tasks = () => {
             <h2>In progress</h2>
             <h2>Done</h2>
         </header>
-        <Task taskSearch={taskSearch} tasks={tasks} setTasks={setTasks} />
+        {tasks.length > 0 
+        ? <Task taskSearch={taskSearch} tasks={tasks} setTasks={setTasks} /> 
+        : <div className="no-container">
+            <SentimentVeryDissatisfiedIcon />
+            <p>Список задач пуст</p>
+        </div>}
         </section>
     </div>
   )

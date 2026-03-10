@@ -313,3 +313,166 @@
         }
     }
 }
+
+@media (max-width: 1360px) {
+    .notes-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.5vw;
+        height: auto;
+
+        .note-elem {
+            height: auto;
+            min-height: 220px;
+
+            .note-text {
+                line-height: 1.6;
+            }
+
+            footer {
+                .footer-container {
+                    data {
+                        margin-left: 0;
+                        justify-content: center;
+                        width: 45%;
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    }
+
+    .update-note,
+    .create-note {
+        .actions-note {
+            article {
+                width: 100%;
+                
+                textarea,
+                input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .note-elem-id {
+        width: 80vw;
+        padding: 28px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .search-action {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .search {
+        width: 100%;
+
+        .search-bar {
+            width: 100%;
+        }
+    }
+
+    .notes-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        height: auto;
+
+        .note-elem {
+            height: auto;
+            min-height: 200px;
+
+            header {
+                padding: 10px 12px;
+                h3 {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1rem;
+                }
+            }
+
+            .text-container {
+                padding: 0 6px 4px;
+            }
+
+            .note-text {
+                padding: 8px 4px 6px;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            footer {
+
+                .footer-container {
+                    align-items: stretch;
+                    gap: 8px;
+                }
+
+                select {
+                    width: 45%;
+                }
+
+                data {
+                    width: 40%;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .update-note,
+    .create-note {
+        h2 {
+            font-size: 1.25rem;
+            text-align: center;
+        }
+
+        .actions-note {
+            article {
+                padding: 14px;
+                width: 85%;
+
+                textarea,
+                input {
+                    width: 100%;
+                    font-size: 0.95rem;
+                }
+
+                textarea {
+                    height: 40vh;
+                }
+            }
+        }
+    }
+
+    .note-elem-id {
+        width: 92vw;
+        padding: 22px 18px 20px;
+        margin: 4vh auto;
+
+        header {
+            h2 {
+                font-size: 1.35rem;
+            }
+        }
+
+        section {
+            p {
+                font-size: 0.98rem;
+                line-height: 1.5;
+            }
+        }
+
+        footer {
+            div {
+                font-size: 0.9rem;
+                padding: 8px 10px;
+            }
+        }
+    }
+}

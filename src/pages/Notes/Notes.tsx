@@ -3,6 +3,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { ButtonElem } from "../../components/ui/ButtonElem";
 import { Note } from "./components/Note Comp/NotesRender";
 import { InputElem } from "../../components/ui/InputElem";
+import { useEffect, useState } from "react";
+import type { INote } from ".";
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 export const Notes = () => {
     const [searchTitle, setSearchTitle] = useSearchParams('');
@@ -14,6 +17,14 @@ export const Notes = () => {
         })
     }
 
+    const [notes, setNotes] = useState<INote[]>([]);
+
+    useEffect(() => {
+        const data = localStorage.getItem("notes");
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setNotes(data ? JSON.parse(data) : []);
+    }, []);
+
   return (
    <div>
         <div className="search-action">
@@ -23,7 +34,12 @@ export const Notes = () => {
             </header>
                 <Link to="/notes/new"><ButtonElem padding="0px 16px" heightElem="35px">Создать заметку</ButtonElem></Link>
         </div>
-        <Note title={titleSearch} />
+        {notes.length > 0 
+        ? <Note title={titleSearch} />: <div className="no-container">
+            <SentimentVeryDissatisfiedIcon />
+            <p>Список заметок пуст</p>
+            </div>
+    }
    </div>
   )
 }

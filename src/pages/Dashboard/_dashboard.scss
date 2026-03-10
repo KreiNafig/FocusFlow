@@ -52,7 +52,8 @@
 
     .dashboard-tasks {
         width: 35%;
-        height: 288px;
+        min-height: 288px;
+        height: 100%;
         @include card-block;
         padding: 28px;
         animation: fade-up var(--dur-4) var(--ease) both;
@@ -69,6 +70,7 @@
         }
         ul {
             @include light-bg-block;
+            min-height: 162px;
             height: 100%;
         }
 
@@ -77,6 +79,34 @@
             margin-top: 10px;
             list-style-type: decimal;
             margin-left: 1.3em;
+        }
+
+        .task-dashboard-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-weight: 500;
+            background-color: rgba(var(--task-dash), 0.10);
+            transition: background var(--dur-3) var(--ease);
+            text-decoration: none;
+            cursor: pointer;
+
+            span {
+                font-size: 16px;
+                letter-spacing: 0.3px;
+            }
+
+            svg {
+                font-size: 22px;
+                vertical-align: middle;
+            }
+
+            &:hover {
+                background-color: rgba(var(--task-dash), 0.18);
+            }
         }
     }
 
@@ -180,6 +210,9 @@
 }
 
 @media (max-width: 768px) {
+    .dashboard {
+        font-size: 1em;
+    }
     .dashboard-container {
         flex-wrap: wrap;
         flex-direction: column;

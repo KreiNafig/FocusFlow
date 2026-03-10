@@ -38,15 +38,15 @@ export const Note = () => {
         const isDarkTheme: string = localStorage.getItem("layout") || '';
         const updateDarkTheme: boolean = isDarkTheme && JSON.parse(isDarkTheme);
         const colors: Record<string, { light: string; dark: string }> = {
-          blue: { light: "#2A284E", dark: "#C2C3E7" },
-          red: { light: "#763230", dark: "#FF7770" },
-          green: { light: "#535D2B", dark: "#CAE7C2" },
-          orange: { light: "#A35D44", dark: "#FFB770" },
-          default: { light: "#2a2522", dark: "#2a2522" }
+          blue: { light: "#C2C3E7", dark: "#2A284E" },
+          red: { light: "#FF7770", dark: "#763230" },
+          green: { light: "#CAE7C2", dark: "#535D2B" },
+          orange: { light: "#FFB770", dark: "#A35D44" },
+          default: { light: "#e7d7c2", dark: "#2a2522" }
         };
   
         const selectedColorKey = eventColor in colors ? eventColor : "default";
-        const color = !updateDarkTheme ? colors[selectedColorKey].dark : colors[selectedColorKey].light;
+        const color = updateDarkTheme ? colors[selectedColorKey].dark : colors[selectedColorKey].light;
         return color;
       }
 
