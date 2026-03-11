@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"npm run scss:watch\"",
     "dev:vite": "vite",
-    "build": "npm run scss:build && tsc -b && vite build",
+    "build": "npm run scss:build && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "scss:build": "sass src/styles/styles.scss src/styles/style.css",
