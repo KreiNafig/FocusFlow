@@ -198,6 +198,18 @@ body {
     }
 }
 
+@keyframes sidebar {
+    0% {
+        transform: translateX(-48px) scale(0.985);
+    }
+    80% {
+        transform: translateX(0) scale(1.01);
+    }
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}
+
 @keyframes bounce {
     0%   { transform: translateY(0);}
     100% { transform: translateY(-12px);}
