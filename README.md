@@ -7,6 +7,11 @@ FocusFlow — это современный **productivity dashboard**, созд
 Проект создан как **pet-project frontend-разработчика** для демонстрации навыков построения современных React-приложений.
 
 
+# 🌐 Live Demo
+
+👉 https://focusflow.vercel.app
+
+
 # ✨ Features
 
 ### 📊 Dashboard продуктивности
