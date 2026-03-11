@@ -31,7 +31,7 @@ export const PomodoroCircle = ({
     totalTime > 0 ? Math.max(0, timeLeft) / Math.max(1, totalTime) : 0;
   const strokeDashoffset = circumference - progress * circumference;
 
-  const roundedTimeLeft = Math.max(0, Math.floor(timeLeft));
+  const roundedTimeLeft = Math.max(0, Math.floor(timeLeft)) + 1;
 
   return (
     <div className="flex flex-col items-center" style={{ width: radius * 2 }}>
@@ -79,7 +79,7 @@ export const PomodoroCircle = ({
               userSelect: 'none'
             }}
           >
-            {formatTime(roundedTimeLeft)}
+            {formatTime(roundedTimeLeft - 1)}
           </text>
         </svg>
       </div>

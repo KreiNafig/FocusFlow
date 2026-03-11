@@ -107,7 +107,7 @@ export const Pomodoro = () => {
             </ButtonElem>
           </div>}
           <div onClick={handleReset}>
-            <ButtonElem padding="14px 14px" butColor="white" color="var(--button-color)">
+            <ButtonElem disable={!pause && true} padding="14px 14px" butColor="white" color="var(--button-color)">
               <RestartAltIcon />
             </ButtonElem>
           </div>
