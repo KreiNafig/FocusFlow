@@ -84,6 +84,7 @@
     @include card-style(16px, var(--border), 24px, var(--card));
     width: 100%;
     min-height: 65vh;
+    margin-bottom: 20px;
     animation: fade-up var(--dur-4) var(--ease) both;
 }
 

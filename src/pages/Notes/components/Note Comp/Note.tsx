@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import type { INote } from '../..';
 
@@ -32,7 +32,7 @@ export const Note = () => {
             console.log("Ошибка распаковки данных заметки из localStorage: ", e);
             setNote([]);
         }
-    }, [id])
+    }, [id, navigate])
 
     function mountColor(eventColor: string): string {
         const isDarkTheme: string = localStorage.getItem("layout") || '';
@@ -52,7 +52,7 @@ export const Note = () => {
 
     if(isNote.length === 0) {
         return(
-            <article>
+            <article className="loading-user">
                 <h1>Загрузка заметки...</h1>
             </article>
         )
@@ -61,10 +61,12 @@ export const Note = () => {
   return (
     <article style={{backgroundColor: `${mountColor(isNote[0].color)}`}} className="note-elem-id">
       <header>
-        <h2>{isNote[0].title}</h2>
+        <h2 style={{ wordWrap: "break-word", overflowWrap: "break-word", whiteSpace: "pre-line" }}>{isNote[0].title}</h2>
       </header>
       <section>
-        <p>{isNote[0].text}</p>
+        <p style={{ wordWrap: "break-word", overflowWrap: "break-word", whiteSpace: "pre-line" }}>
+          {isNote[0].text}
+        </p>
       </section>
       <footer>
         <div>

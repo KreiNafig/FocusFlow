@@ -728,6 +728,7 @@ body a {
   border: 2px solid var(--border-strong);
   box-shadow: 0 8px 20px var(--shadow-card);
   border-radius: 16px;
+  margin-bottom: 20px;
   transition: box-shadow var(--dur-3) var(--ease), background var(--dur-3) var(--ease), transform var(--dur-2) var(--ease), filter var(--dur-2) var(--ease);
   will-change: transform;
 }
@@ -801,6 +802,7 @@ body a {
   padding: 24px;
   width: 100%;
   min-height: 65vh;
+  margin-bottom: 20px;
   animation: fade-up var(--dur-4) var(--ease) both;
 }
 
@@ -1132,7 +1134,7 @@ article {
   align-items: stretch;
   justify-content: space-between;
   border-radius: 9px;
-  height: 46vh;
+  height: 320px;
   border: 1.5px solid var(--border-strong);
   animation: fade-up var(--dur-4) var(--ease) both;
   transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color var(--dur-3) var(--ease), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1189,8 +1191,10 @@ article {
 }
 .notes-container .note-elem .note-text {
   padding: 9px;
-  word-break: break-all;
-  line-height: 2.5vh;
+  word-break: break-word;
+  white-space: pre-line;
+  hyphens: auto;
+  line-height: 18px;
   width: 100%;
   color: var(--text);
 }

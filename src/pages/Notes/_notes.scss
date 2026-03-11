@@ -59,7 +59,7 @@
     .note-elem {
         @include flex(column, 0, stretch, space-between);
         border-radius: 9px;
-        height: 46vh;
+        height: 320px;
         border: 1.5px solid var(--border-strong);
         animation: fade-up var(--dur-4) var(--ease) both;
 
@@ -128,8 +128,10 @@
 
         .note-text {
             padding: 9px;
-            word-break: break-all;
-            line-height: 2.5vh;
+            word-break: break-word;
+            white-space: pre-line;
+            hyphens: auto;
+            line-height: 18px;
             width: 100%;
             color: var(--text);
         }

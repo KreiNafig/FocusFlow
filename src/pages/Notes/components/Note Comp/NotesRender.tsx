@@ -107,7 +107,7 @@ export const Note = ({ title }: NoteProps) => {
                       <PushPinIcon />
                     </div>
                   )}
-                  <h3>{e.title}</h3>
+                  <h3>{e.title.slice(0, 20)}{e.title.length > 20 && "..."}</h3>
                 </div>
                 <div className="action-note">
                   <div onClick={() => handlePin(e.id)}>
@@ -127,8 +127,8 @@ export const Note = ({ title }: NoteProps) => {
             <Link to={`/notes/${e.id}`}>
               <div className="text-container">
               <p className="note-text">
-                {e.text.slice(0, 450)}
-                {e.text.length > 356 && "..."}
+                {e.text.slice(0, 280)}
+                {e.text.length > 280 && "..."}
               </p>
               </div>
               </Link>
