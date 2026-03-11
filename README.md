@@ -9,7 +9,7 @@ FocusFlow — это современный **productivity dashboard**, созд
 
 # 🌐 Live Demo
 
-👉 https://focusflow.vercel.app
+👉 https://focus-flow-krein.vercel.app/
 
 
 # ✨ Features

@@ -34,7 +34,7 @@ export const Graphic = () => {
     }, []);
 
     return (
-        <article className="dashboard-card">
+        <article className="dashboard-card graphic-card">
             <header>
                 <h2>График продуктивности:</h2>
             </header>
