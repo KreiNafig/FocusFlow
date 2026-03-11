@@ -117,16 +117,43 @@ FocusFlow — это современный **productivity dashboard**, созд
 - LocalStorage
 
 
-# Project Structure
+# 📂 Project Structure
 
-src
- ┣ components
- ┣ pages
- ┣ store
- ┣ hooks
- ┣ services
- ┣ utils
- ┗ styles
+```
+FocusFlow
+│
+├── public
+│
+├── src
+│   │
+│   ├── components      # Переиспользуемые UI компоненты
+│   │
+│   ├── pages           # Страницы приложения
+│   │   ├── Dashboard
+│   │   ├── Tasks
+│   │   ├── Notes
+│   │   ├── Profile
+│   │   ├── Settings
+│   │   └── NotFound
+│   │
+│   ├── store           # RTK Query store (глобальное состояние)
+│   │
+│   ├── services        # Работа с API
+│   │
+│   ├── hooks           # Кастомные React хуки
+│   │
+│   ├── utils           # Вспомогательные функции
+│   │
+│   ├── styles          # Глобальные стили и темы
+│   │
+│   ├── App.tsx         # Основной компонент приложения
+│   └── main.tsx        # Точка входа
+│
+├── screenshots         # Скриншоты для README
+│
+├── package.json
+└── README.md
+```
 
 
 # 📦 Installation
