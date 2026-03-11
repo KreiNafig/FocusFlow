@@ -117,6 +117,18 @@ FocusFlow — это современный **productivity dashboard**, созд
 - LocalStorage
 
 
+# Project Structure
+
+src
+ ┣ components
+ ┣ pages
+ ┣ store
+ ┣ hooks
+ ┣ services
+ ┣ utils
+ ┗ styles
+
+
 # 📦 Installation
 
 ```bash
