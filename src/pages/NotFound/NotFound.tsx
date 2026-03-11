@@ -12,7 +12,7 @@ export const NotFound = () => {
           Вы можете вернуться на главную панель или к заметкам.
         </p>
         <div className="not-found__actions">
-          <Link to="/dashboard">
+          <Link to="/">
             <ButtonElem widthElem="170px" heightElem="40px">
               На главную
             </ButtonElem>

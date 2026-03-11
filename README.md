@@ -63,7 +63,24 @@ FocusFlow — это современный **productivity dashboard**, созд
 
 
 # 📸 Screenshots
-Soon
+
+### Dashboard
+![](./screenshots/dashboard.png)
+
+### Tasks
+![](./screenshots/tasks.png)
+
+### Notes
+![](./screenshots/notes.png)
+
+### Profile
+![](./screenshots/profile.png)
+
+### Settings
+![](./screenshots/settings.png)
+
+### Not Found Page
+![](./screenshots/notfound.png)
 
 
 # 🛠 Tech Stack
@@ -74,7 +91,7 @@ Soon
 - Vite
 
 ### State Management
-- Zustand
+- RTK Query
 
 ### Routing
 - React Router
@@ -89,6 +106,7 @@ Soon
 
 ### Animations
 - Framer Motion
+- Css animation
 
 ### APIs
 - Random Quote API

@@ -48,7 +48,7 @@ export const Outlet = () => {
           return(
             <div className="languette" key={e.name}>
               <IconComponent />
-              <Link to={`/${e.name}`}>{e.name[0].toUpperCase() + e.name.slice(1)}</Link>
+              <Link to={e.name === "dashboard" ? '' :`/${e.name}`}>{e.name[0].toUpperCase() + e.name.slice(1)}</Link>
             </div>
           )})}
         </section>

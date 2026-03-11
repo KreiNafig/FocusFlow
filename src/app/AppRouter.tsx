@@ -51,7 +51,7 @@ const Settings = lazy(() => import("../pages/Settings/Settings").then(module => 
     <Suspense fallback={(<h1 className="loading-page">Загрузка страницы...</h1>)}>
       <Routes >
         <Route element={<Outlet />}>
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route index element={<Dashboard />} />
           <Route path='/tasks' element={<Tasks />} />
           <Route path='/notes' element={<Notes />} />
           <Route path='/notes/:id' element={<Note />} />
