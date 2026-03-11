@@ -28,7 +28,7 @@ export const Outlet = () => {
   const currentLink = arrayLink.find(link => link.name === path);
   const headerTitle: string = currentLink
     ? currentLink.name[0].toUpperCase() + currentLink.name.slice(1)
-    : path
+    : "Dashboard"
 
     function handleClose():void {
       setOpenBurger(false)

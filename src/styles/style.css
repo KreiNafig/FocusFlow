@@ -237,6 +237,17 @@ body a {
   text-shadow: 0 2px 12px var(--loading-title-shadow);
 }
 
+@keyframes sidebar {
+  0% {
+    transform: translateX(-48px) scale(0.985);
+  }
+  80% {
+    transform: translateX(0) scale(1.01);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
 @keyframes bounce {
   0% {
     transform: translateY(0);
@@ -428,24 +439,13 @@ body a {
     animation: sidebar 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
   }
-  @keyframes sidebar {
-    0% {
-      transform: translateX(-48px) scale(0.985);
-    }
-    80% {
-      transform: translateX(0) scale(1.01);
-    }
-    100% {
-      transform: translateX(0) scale(1);
-    }
-  }
   .container aside.active section {
-    top: 26vh;
+    top: 22.5vh;
     left: 55px;
   }
   .container aside.active header h1 {
     position: absolute;
-    top: 5vh;
+    top: 9vh;
   }
   .container .header {
     width: 100%;
